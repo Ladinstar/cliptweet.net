@@ -1,0 +1,127 @@
+version: '3'
+
+# Twitter Video Downloader — dev task runner.
+# Run `task` (no args) to list available commands.
+
+vars:
+  COMPOSE: docker compose
+
+tasks:
+  default:
+    desc: List all available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  install:
+    desc: Install all dependencies (root tooling + client + server)
+    cmds:
+      - npm install
+      - npm --prefix client install
+      - npm --prefix server install
+
+  dev:
+    desc: Run client and server dev servers together (parallel)
+    deps: [dev:server, dev:client]
+
+  dev:server:
+    desc: Run the API in watch mode
+    dir: server
+    cmds:
+      - npm run dev
+
+  dev:client:
+    desc: Run the Vite dev server
+    dir: client
+    cmds:
+      - npm run dev
+
+  format:
+    desc: Auto-format the whole repo with Prettier
+    cmds:
+      - npm run format
+
+  format:check:
+    desc: Check formatting without writing changes
+    cmds:
+      - npm run format:check
+
+  lint:
+    desc: Lint the client (ESLint)
+    dir: client
+    cmds:
+      - npm run lint
+
+  lint:fix:
+    desc: Lint and auto-fix the client (ESLint --fix)
+    dir: client
+    cmds:
+      - npm run lint:fix
+
+  fix:
+    desc: Format everything then auto-fix lint issues (the "make it clean" command)
+    cmds:
+      - task: format
+      - task: lint:fix
+
+  test:
+    desc: Run the server and client test suites
+    cmds:
+      - npm --prefix server test
+      - npm --prefix client test
+
+  e2e:
+    desc: Run client end-to-end tests (Playwright) — run `npx playwright install` once first
+    dir: client
+    cmds:
+      - npm run e2e
+
+  postman:
+    desc: Run all Postman API tests (newman) against the running stack
+    cmds:
+      - npx --yes newman run postman/collection.json -e postman/environment.json
+
+  postman:core:
+    desc: Run only the no-network Postman tests (health, auth, validation)
+    cmds:
+      - npx --yes newman run postman/collection.json -e postman/environment.json --folder Core
+
+  build:
+    desc: Build the client for production
+    dir: client
+    cmds:
+      - npm run build
+
+  quality:
+    desc: Full check — format check, lint, tests, build
+    cmds:
+      - task: format:check
+      - task: lint
+      - task: test
+      - task: build
+
+  up:
+    desc: Start the full stack with Docker Compose (build + detached)
+    cmds:
+      - '{{.COMPOSE}} up --build -d'
+      - 'echo "App: http://localhost:8080"'
+
+  down:
+    desc: Stop the stack
+    cmds:
+      - '{{.COMPOSE}} down'
+
+  logs:
+    desc: Tail logs from all services
+    cmds:
+      - '{{.COMPOSE}} logs -f'
+
+  rebuild:
+    desc: Rebuild images from scratch and restart
+    cmds:
+      - '{{.COMPOSE}} up --build --force-recreate -d'
+
+  clean:
+    desc: Stop the stack and remove volumes (drops the Mongo data!)
+    cmds:
+      - '{{.COMPOSE}} down -v'

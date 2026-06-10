@@ -1,0 +1,13 @@
+{
+  "name": "twitter-video-downloader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tooling root for the Twitter Video Downloader monorepo (formatting, scripts).",
+  "scripts": {
+    "format": "prettier --write \"client/src/**/*.{ts,tsx,css}\" \"server/**/*.js\" \"*.{json,md,yml}\"",
+    "format:check": "prettier --check \"client/src/**/*.{ts,tsx,css}\" \"server/**/*.js\" \"*.{json,md,yml}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}

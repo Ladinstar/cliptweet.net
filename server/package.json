@@ -1,0 +1,32 @@
+{
+  "name": "twitter-video-downloader-server",
+  "version": "1.0.0",
+  "description": "API pour télécharger des vidéos Twitter",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.3",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^5.9.2",
+    "p-queue": "^8.0.1",
+    "rate-limit-redis": "^4.2.0",
+    "pino": "^8.19.0",
+    "pino-http": "^9.0.0",
+    "yt-dlp-exec": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "pino-pretty": "^11.0.0"
+  }
+}

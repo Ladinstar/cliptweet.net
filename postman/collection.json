@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Twitter Video Downloader API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API tests run with newman. Core = no external network; Live = hits X/yt-dlp."
+  },
+  "variable": [{ "key": "token", "value": "" }],
+  "item": [
+    {
+      "name": "Core",
+      "item": [
+        {
+          "name": "Health",
+          "request": { "method": "GET", "url": "{{baseUrl}}/health" },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('200', () => pm.response.to.have.status(200));",
+                  "pm.test('db up', () => pm.expect(pm.response.json().status).to.eql('ok'));",
+                  "pm.test('noindex header', () => pm.expect(pm.response.headers.get('X-Robots-Tag')).to.include('noindex'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Formats — rejects non-Twitter host (SSRF)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"tweetUrl\":\"https://evil.com/status/123\"}" },
+            "url": "{{baseUrl}}/formats"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "exec": ["pm.test('400', () => pm.response.to.have.status(400));"] }
+            }
+          ]
+        },
+        {
+          "name": "Download — rejects injected formatId",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tweetUrl\":\"{{tweetUrl}}\",\"formatId\":\"bad; rm -rf /\"}"
+            },
+            "url": "{{baseUrl}}/download"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "exec": ["pm.test('400', () => pm.response.to.have.status(400));"] }
+            }
+          ]
+        },
+        {
+          "name": "Admin login — wrong password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"username\":\"{{adminUser}}\",\"password\":\"wrong-pass\"}" },
+            "url": "{{baseUrl}}/admin/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "exec": ["pm.test('401', () => pm.response.to.have.status(401));"] }
+            }
+          ]
+        },
+        {
+          "name": "Admin login — success",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"username\":\"{{adminUser}}\",\"password\":\"{{adminPass}}\"}" },
+            "url": "{{baseUrl}}/admin/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('200', () => pm.response.to.have.status(200));",
+                  "const t = pm.response.json().token;",
+                  "pm.test('returns a JWT', () => pm.expect(t.split('.').length).to.eql(3));",
+                  "pm.collectionVariables.set('token', t);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Stats — no token (401)",
+          "request": { "method": "GET", "url": "{{baseUrl}}/admin/stats" },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "exec": ["pm.test('401', () => pm.response.to.have.status(401));"] }
+            }
+          ]
+        },
+        {
+          "name": "Stats — forged token (401)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer admin" }],
+            "url": "{{baseUrl}}/admin/stats"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "exec": ["pm.test('401', () => pm.response.to.have.status(401));"] }
+            }
+          ]
+        },
+        {
+          "name": "Stats — valid JWT (200)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/admin/stats"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('200', () => pm.response.to.have.status(200));",
+                  "pm.test('has counters', () => pm.expect(pm.response.json()).to.have.property('downloads'));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Live (network)",
+      "item": [
+        {
+          "name": "Formats — real tweet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"tweetUrl\":\"{{tweetUrl}}\"}" },
+            "url": "{{baseUrl}}/formats"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('200', () => pm.response.to.have.status(200));",
+                  "const d = pm.response.json();",
+                  "pm.test('has formats', () => pm.expect(d.formats.length).to.be.above(0));",
+                  "pm.test('format has url', () => pm.expect(d.formats[0].url).to.be.a('string'));",
+                  "pm.collectionVariables.set('formatId', d.formats[d.formats.length - 1].id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Download — by formatId",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"tweetUrl\":\"{{tweetUrl}}\",\"formatId\":\"{{formatId}}\"}" },
+            "url": "{{baseUrl}}/download"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('200', () => pm.response.to.have.status(200));",
+                  "pm.test('twimg url', () => pm.expect(pm.response.json().downloadUrl).to.include('twimg.com'));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Local",
+  "values": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api", "enabled": true },
+    { "key": "adminUser", "value": "admin", "enabled": true },
+    { "key": "adminPass", "value": "admin123", "enabled": true },
+    { "key": "tweetUrl", "value": "https://x.com/afrofrench9ja/status/2064078136086614133", "enabled": true }
+  ]
+}

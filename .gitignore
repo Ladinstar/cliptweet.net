@@ -1,0 +1,23 @@
+node_modules
+dist
+build
+.DS_Store
+*.log
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Next.js
+.next
+out
+next-env.d.ts
+
+# Tests / tooling
+coverage
+playwright-report
+test-results
+
+# Misc
+server/database.sqlite

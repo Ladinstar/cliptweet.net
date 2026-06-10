@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  server:
+    name: Server (lint-free, tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  client:
+    name: Client (lint, test, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: /api
+
+  format:
+    name: Prettier check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run format:check
+
+  api-postman:
+    name: API tests (Postman/newman)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Start the stack
+        run: |
+          printf 'ADMIN_USERNAME=admin\nADMIN_PASSWORD=admin123\nJWT_SECRET=ci-only-secret-0123456789abcdef\n' > server/.env
+          docker compose up -d --build
+      - name: Wait for the API to be healthy
+        run: |
+          for i in $(seq 1 40); do
+            [ "$(curl -s http://localhost:8080/api/health)" = '{"status":"ok","db":"up"}' ] && break
+            sleep 3
+          done
+      - name: Run core API tests (no external network)
+        run: npx --yes newman run postman/collection.json -e postman/environment.json --folder Core
+      - name: Tear down
+        if: always()
+        run: docker compose down -v

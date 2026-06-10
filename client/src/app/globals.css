@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surfaceSoft: #f8fafc;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: rgba(148, 163, 184, 0.15);
+  --ring: rgba(148, 163, 184, 0.2);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #020617;
+  --surface: rgba(15, 23, 42, 0.88);
+  --surfaceSoft: rgba(30, 41, 59, 0.95);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.12);
+  --ring: rgba(56, 189, 248, 0.18);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  @apply antialiased;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.surface {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.surface-soft {
+  background: var(--surfaceSoft);
+}
+
+.border-surface {
+  border-color: var(--border);
+}
+
+/* Respect users who prefer fewer animations. */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible keyboard focus for accessibility. */
+:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

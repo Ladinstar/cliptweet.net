@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Início",
+    "admin": "Admin"
+  },
+  "header": {
+    "title": "Twitter Video Downloader",
+    "subtitle": "Baixe vídeos do Twitter em segundos."
+  },
+  "home": {
+    "heroTag": "Grátis e sem cadastro",
+    "heroTitle": "Baixe seu vídeo do Twitter com um clique.",
+    "heroDesc": "Cole o link de um tweet, escolha a qualidade e obtenha seu vídeo em MP4 em segundos. Grátis, sem cadastro e sem instalar nada.",
+    "resultTitle": "Seu vídeo",
+    "resultDesc": "Quando o link for válido, escolha uma resolução e o download começa logo.",
+    "inputLabel": "Link do tweet",
+    "inputPlaceholder": "https://twitter.com/username/status/1234567890",
+    "downloadButton": "Baixar agora",
+    "download": "Baixar",
+    "loadingButton": "Baixando...",
+    "copyButton": "Copiar link",
+    "copySuccess": "Link copiado!",
+    "paste": "Colar",
+    "clear": "Limpar",
+    "enterLink": "Insira um link de tweet acima para ver as qualidades disponíveis.",
+    "downloadTitle": "Título:",
+    "adLabel": "Publicidade",
+    "formatLabel": "Formato",
+    "formatMp4": "MP4",
+    "formatMp3": "MP3",
+    "qualityLabel": "Qualidade",
+    "qualityBest": "Melhor qualidade",
+    "qualityLow": "Qualidade reduzida",
+    "requestError": "Erro na solicitação",
+    "analyzeButton": "Ver qualidades",
+    "chooseQuality": "Escolha uma qualidade",
+    "noFormats": "Nenhuma qualidade para download encontrada para este link.",
+    "downloadHint": "Clique em uma qualidade para iniciar o download. Você pode baixar várias.",
+    "downloadStarted": "Download iniciado. Se nada acontecer, use o botão abaixo.",
+    "recentTitle": "Recentes",
+    "clearHistory": "Limpar"
+  },
+  "steps": {
+    "title": "Como baixar um vídeo do Twitter / X?",
+    "subtitle": "Em 3 passos, no computador e no celular.",
+    "step1Title": "Copie o link do tweet",
+    "step1Desc": "No Twitter / X, toque no ícone Compartilhar abaixo do tweet e depois em «Copiar link».",
+    "step2Title": "Cole o link",
+    "step2Desc": "Cole o link no campo acima e clique em «Ver qualidades».",
+    "step3Title": "Escolha e baixe",
+    "step3Desc": "Selecione a resolução desejada: o download começa imediatamente."
+  },
+  "features": {
+    "title": "Por que usar nosso downloader?",
+    "hdTitle": "Vídeos em HD",
+    "hdDesc": "Baixe até a melhor resolução disponível no tweet.",
+    "freeTitle": "100% grátis",
+    "freeDesc": "Sem cadastro, sem limites, nada para instalar.",
+    "fastTitle": "Rápido e simples",
+    "fastDesc": "Cole um link, escolha uma qualidade, baixe em segundos.",
+    "devicesTitle": "Todos os seus dispositivos",
+    "devicesDesc": "Funciona no navegador, no celular, tablet e computador.",
+    "qualitiesTitle": "Todas as qualidades",
+    "qualitiesDesc": "Veja cada resolução com seu tamanho de arquivo antes de escolher.",
+    "privacyTitle": "Privado e seguro",
+    "privacyDesc": "Nenhum arquivo guardado em nossos servidores, nenhuma conta necessária."
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "q1": "O serviço é realmente grátis?",
+    "a1": "Sim, totalmente. Sem cadastro e sem limite de downloads.",
+    "q2": "Preciso de uma conta?",
+    "a2": "Não. Basta colar o link de um tweet que contenha um vídeo.",
+    "q3": "Posso baixar vídeos privados?",
+    "a3": "Não. Conteúdo privado exige login na conta, por motivos de segurança e privacidade.",
+    "q4": "Quais qualidades estão disponíveis?",
+    "a4": "Todas as resoluções que o Twitter / X oferece para o vídeo, com o tamanho do arquivo.",
+    "q5": "Em quais dispositivos funciona?",
+    "a5": "Em qualquer navegador moderno, seja no celular, tablet ou computador.",
+    "q6": "É legal baixar um vídeo?",
+    "a6": "Para uso pessoal, geralmente é aceito. Respeite os direitos dos criadores."
+  },
+  "footer": {
+    "tagline": "Baixe vídeos do Twitter / X de graça em segundos.",
+    "disclaimer": "Serviço não afiliado à X Corp. / Twitter. Marcas e conteúdos pertencem aos seus respectivos proprietários.",
+    "rights": "Todos os direitos reservados.",
+    "legal": "Jurídico"
+  },
+  "admin": {
+    "title": "Área Admin",
+    "loadError": "Não foi possível carregar as estatísticas.",
+    "recentLinks": "Links recentes",
+    "noLinks": "Ainda não há downloads.",
+    "loginButton": "Entrar",
+    "logoutButton": "Sair",
+    "welcome": "Bem-vindo, {{username}}",
+    "authRequired": "Autenticação necessária",
+    "statsTitle": "Estatísticas",
+    "popularFormats": "Formatos populares",
+    "totalDownloads": "Total de downloads",
+    "totalErrors": "Total de erros",
+    "loginPageDesc": "Insira suas credenciais para acessar as estatísticas",
+    "backHome": "← Voltar ao início",
+    "usernameLabel": "Usuário",
+    "passwordLabel": "Senha",
+    "loginRequired": "Credenciais necessárias.",
+    "loginError": "Erro de conexão",
+    "connecting": "Conectando..."
+  },
+  "consent": {
+    "text": "Usamos cookies para estatísticas e anúncios.",
+    "accept": "Aceitar",
+    "decline": "Recusar",
+    "more": "Saber mais"
+  },
+  "pages": {
+    "about": {
+      "title": "Sobre",
+      "paragraphs": [
+        "Twitter Video Downloader é uma ferramenta online gratuita que permite guardar vídeos e GIFs do Twitter / X usando apenas o link de um tweet.",
+        "O nosso objetivo é simples: oferecer a forma mais rápida e limpa de baixar um vídeo do Twitter na qualidade que quiseres, sem cadastro e sem software para instalar.",
+        "Não somos afiliados à X Corp. nem ao Twitter. Não armazenamos nenhum vídeo nos nossos servidores — apenas te ajudamos a obter conteúdo público para uso pessoal."
+      ]
+    },
+    "privacy": {
+      "title": "Política de privacidade",
+      "paragraphs": [
+        "Respeitamos a tua privacidade. Não exigimos conta nem pedimos dados pessoais para usar o downloader.",
+        "Quando envias o link de um tweet, ele é processado apenas para obter as qualidades de vídeo disponíveis. Guardamos dados de uso anónimos e agregados (como o número de downloads e erros) para manter e melhorar o serviço.",
+        "Não armazenamos nem guardamos os vídeos baixados nos nossos servidores. Podemos usar cookies de análise e publicidade; podes controlá-los nas definições do teu navegador.",
+        "Para qualquer questão sobre os teus dados, contacta-nos na página de Contacto."
+      ]
+    },
+    "terms": {
+      "title": "Termos de utilização",
+      "paragraphs": [
+        "Ao usar este site aceitas estes termos. O serviço é fornecido «tal como está», sem garantia de qualquer tipo.",
+        "Podes usar o downloader apenas para fins pessoais e não comerciais. És responsável por respeitar os direitos de autor e dos criadores de conteúdo.",
+        "Não é permitido baixar conteúdo privado ou conteúdo que não estejas autorizado a usar. Não somos responsáveis pelo uso que fazes dos ficheiros baixados.",
+        "Não somos afiliados à X Corp. nem ao Twitter. Podemos atualizar estes termos a qualquer momento."
+      ]
+    },
+    "contact": {
+      "title": "Contacto",
+      "paragraphs": [
+        "Tens uma pergunta, um bug para reportar ou uma ideia de parceria? Gostaríamos muito de saber de ti.",
+        "Escreve-nos por email e responderemos o mais rápido possível."
+      ],
+      "email": "contact@example.com"
+    }
+  }
+}

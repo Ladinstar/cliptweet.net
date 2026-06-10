@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Home",
+    "admin": "Admin"
+  },
+  "header": {
+    "title": "Twitter Video Downloader",
+    "subtitle": "Download Twitter videos in seconds."
+  },
+  "home": {
+    "heroTag": "Free & no sign-up",
+    "heroTitle": "Download your Twitter video in one click.",
+    "heroDesc": "Paste a tweet link, choose the quality and get your MP4 video in seconds. Free, no sign-up and nothing to install.",
+    "resultTitle": "Your video",
+    "resultDesc": "When the link is valid, pick a resolution and the download starts right away.",
+    "inputLabel": "Tweet link",
+    "inputPlaceholder": "https://twitter.com/username/status/1234567890",
+    "downloadButton": "Download now",
+    "download": "Download",
+    "loadingButton": "Downloading...",
+    "copyButton": "Copy link",
+    "copySuccess": "Link copied!",
+    "paste": "Paste",
+    "clear": "Clear",
+    "enterLink": "Enter a tweet link above to see the available qualities.",
+    "downloadTitle": "Title:",
+    "adLabel": "Advertisement",
+    "formatLabel": "Format",
+    "formatMp4": "MP4",
+    "formatMp3": "MP3",
+    "qualityLabel": "Quality",
+    "qualityBest": "Best quality",
+    "qualityLow": "Lower quality",
+    "requestError": "Request failed",
+    "analyzeButton": "Show qualities",
+    "chooseQuality": "Choose a quality",
+    "noFormats": "No downloadable quality found for this link.",
+    "downloadHint": "Click a quality to start the download. You can grab several.",
+    "downloadStarted": "Download started. If nothing happens, use the button below.",
+    "recentTitle": "Recent",
+    "clearHistory": "Clear"
+  },
+  "steps": {
+    "title": "How to download a Twitter / X video?",
+    "subtitle": "In 3 steps, on desktop and mobile.",
+    "step1Title": "Copy the tweet link",
+    "step1Desc": "On Twitter / X, tap the Share icon under the tweet, then 'Copy link'.",
+    "step2Title": "Paste the link",
+    "step2Desc": "Paste the link into the field above and click 'Show qualities'.",
+    "step3Title": "Choose and download",
+    "step3Desc": "Select the resolution you want — the download starts immediately."
+  },
+  "features": {
+    "title": "Why use our downloader?",
+    "hdTitle": "HD videos",
+    "hdDesc": "Download up to the best resolution available on the tweet.",
+    "freeTitle": "100% free",
+    "freeDesc": "No sign-up, no limits, nothing to install.",
+    "fastTitle": "Fast & simple",
+    "fastDesc": "Paste a link, pick a quality, download in seconds.",
+    "devicesTitle": "All your devices",
+    "devicesDesc": "Works in the browser, on mobile, tablet and desktop.",
+    "qualitiesTitle": "Every quality",
+    "qualitiesDesc": "See each resolution with its file size before you choose.",
+    "privacyTitle": "Private & secure",
+    "privacyDesc": "No files kept on our servers, no account required."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "q1": "Is the service really free?",
+    "a1": "Yes, completely. No sign-up, no download limits.",
+    "q2": "Do I need an account?",
+    "a2": "No. Just paste the link of a tweet that contains a video.",
+    "q3": "Can I download private videos?",
+    "a3": "No. Private content requires logging into the account, for security and privacy reasons.",
+    "q4": "Which qualities are available?",
+    "a4": "All resolutions Twitter / X provides for the video, shown with their file size.",
+    "q5": "Which devices does it work on?",
+    "a5": "Any modern browser, whether you're on mobile, tablet or desktop.",
+    "q6": "Is it legal to download a video?",
+    "a6": "For personal use it's generally accepted. Respect creators' rights and don't reuse their content without permission."
+  },
+  "footer": {
+    "tagline": "Download Twitter / X videos for free in seconds.",
+    "disclaimer": "Not affiliated with X Corp. / Twitter. Trademarks and content belong to their respective owners.",
+    "rights": "All rights reserved.",
+    "legal": "Legal"
+  },
+  "pages": {
+    "about": {
+      "title": "About",
+      "paragraphs": [
+        "Twitter Video Downloader is a free online tool that lets you save videos and GIFs from Twitter / X using only the link to a tweet.",
+        "Our goal is simple: offer the fastest, cleanest way to download a Twitter video in the quality you want, with no sign-up and no software to install.",
+        "We are not affiliated with X Corp. or Twitter. We do not host any videos on our servers — we only help you fetch publicly available media for personal use."
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "paragraphs": [
+        "We respect your privacy. We do not require an account and we do not ask for any personal information to use the downloader.",
+        "When you submit a tweet link, it is processed only to fetch the available video qualities. We store anonymous, aggregated usage data (such as the number of downloads and errors) to keep the service running and improve it.",
+        "We do not host or keep the downloaded videos on our servers. We may use analytics and advertising cookies; you can control these through your browser settings.",
+        "For any question about your data, contact us via the Contact page."
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "paragraphs": [
+        "By using this website you agree to these terms. The service is provided as-is, without warranty of any kind.",
+        "You may use the downloader for personal, non-commercial purposes only. You are responsible for respecting copyright and the rights of content creators.",
+        "Downloading private content, or content you are not allowed to use, is not permitted. We are not responsible for how you use the downloaded files.",
+        "We are not affiliated with X Corp. or Twitter. We may update these terms at any time."
+      ]
+    },
+    "contact": {
+      "title": "Contact Us",
+      "paragraphs": [
+        "Got a question, a bug report or a partnership idea? We'd love to hear from you.",
+        "Reach us by email and we'll get back to you as soon as possible."
+      ],
+      "email": "contact@example.com"
+    }
+  },
+  "admin": {
+    "title": "Admin area",
+    "desc": "Quick view of downloads, recent links, and errors.",
+    "loading": "Loading...",
+    "loadError": "Unable to load statistics.",
+    "statsDownloads": "Downloads",
+    "statsRecentLinks": "Recent links",
+    "statsErrors": "Errors",
+    "recentLinks": "Recent links",
+    "lastErrors": "Recent errors",
+    "noLinks": "No downloads yet.",
+    "noErrors": "No errors reported.",
+    "loginTitle": "Administrator login",
+    "loginDesc": "Enter the admin password to access statistics.",
+    "passwordPlaceholder": "Admin password",
+    "loginButton": "Sign in",
+    "logoutButton": "Sign out",
+    "authError": "Invalid password.",
+    "formatStats": "Format statistics",
+    "qualityStats": "Quality statistics",
+    "welcome": "Welcome, {{username}}",
+    "authRequired": "Authentication required",
+    "statsTitle": "Statistics",
+    "popularFormats": "Popular formats",
+    "totalDownloads": "Total downloads",
+    "totalErrors": "Total errors",
+    "loginPageDesc": "Enter your credentials to access the statistics",
+    "backHome": "← Back to home",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "loginRequired": "Credentials required.",
+    "loginError": "Login error",
+    "connecting": "Signing in..."
+  },
+  "consent": {
+    "text": "We use cookies for analytics and ads.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "more": "Learn more"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "desc": "The page you're looking for doesn't exist or has moved.",
+    "home": "Back to home"
+  }
+}

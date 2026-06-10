@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "admin": "Admin"
+  },
+  "header": {
+    "title": "Twitter Video Downloader",
+    "subtitle": "Téléchargez des vidéos Twitter en quelques secondes."
+  },
+  "home": {
+    "heroTag": "Gratuit & sans inscription",
+    "heroTitle": "Télécharge ta vidéo Twitter en un clic.",
+    "heroDesc": "Colle le lien d'un tweet, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription et sans logiciel à installer.",
+    "resultTitle": "Ta vidéo",
+    "resultDesc": "Quand le lien est valide, choisis la résolution et le téléchargement démarre aussitôt.",
+    "inputLabel": "Lien du tweet",
+    "inputPlaceholder": "https://twitter.com/username/status/1234567890",
+    "downloadButton": "Télécharger maintenant",
+    "download": "Télécharger",
+    "loadingButton": "Téléchargement...",
+    "copyButton": "Copier le lien",
+    "copySuccess": "Lien copié !",
+    "paste": "Coller",
+    "clear": "Effacer",
+    "enterLink": "Entre un lien de tweet ci-dessus pour voir les qualités disponibles.",
+    "downloadTitle": "Titre :",
+    "adLabel": "Publicité",
+    "formatLabel": "Format",
+    "formatMp4": "MP4",
+    "formatMp3": "MP3",
+    "qualityLabel": "Qualité",
+    "qualityBest": "Meilleure qualité",
+    "qualityLow": "Qualité réduite",
+    "requestError": "Erreur lors de la requête",
+    "analyzeButton": "Voir les qualités",
+    "chooseQuality": "Choisis une qualité",
+    "noFormats": "Aucune qualité téléchargeable trouvée pour ce lien.",
+    "downloadHint": "Clique sur une qualité pour lancer le téléchargement. Tu peux en télécharger plusieurs.",
+    "downloadStarted": "Téléchargement lancé. Si rien ne se passe, utilise le bouton ci-dessous.",
+    "recentTitle": "Récents",
+    "clearHistory": "Effacer"
+  },
+  "steps": {
+    "title": "Comment télécharger une vidéo Twitter / X ?",
+    "subtitle": "En 3 étapes, sur ordinateur comme sur mobile.",
+    "step1Title": "Copie le lien du tweet",
+    "step1Desc": "Sur Twitter / X, appuie sur l'icône Partager sous le tweet, puis sur « Copier le lien ».",
+    "step2Title": "Colle le lien",
+    "step2Desc": "Colle le lien dans le champ ci-dessus et clique sur « Voir les qualités ».",
+    "step3Title": "Choisis et télécharge",
+    "step3Desc": "Sélectionne la résolution voulue : le téléchargement démarre immédiatement."
+  },
+  "features": {
+    "title": "Pourquoi utiliser notre téléchargeur ?",
+    "hdTitle": "Vidéos en HD",
+    "hdDesc": "Télécharge jusqu'à la meilleure résolution disponible sur le tweet.",
+    "freeTitle": "100 % gratuit",
+    "freeDesc": "Aucune inscription, aucune limite, aucun logiciel à installer.",
+    "fastTitle": "Rapide & simple",
+    "fastDesc": "Colle un lien, choisis une qualité, c'est téléchargé en quelques secondes.",
+    "devicesTitle": "Tous tes appareils",
+    "devicesDesc": "Fonctionne dans le navigateur, sur mobile, tablette et ordinateur.",
+    "qualitiesTitle": "Toutes les qualités",
+    "qualitiesDesc": "Visualise chaque résolution avec sa taille de fichier avant de choisir.",
+    "privacyTitle": "Privé & sécurisé",
+    "privacyDesc": "Aucun fichier conservé sur nos serveurs, aucun compte requis."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "Le service est-il vraiment gratuit ?",
+    "a1": "Oui, totalement. Pas d'inscription, pas de limite de téléchargements.",
+    "q2": "Dois-je créer un compte ?",
+    "a2": "Non. Il te suffit de coller le lien d'un tweet contenant une vidéo.",
+    "q3": "Puis-je télécharger des vidéos privées ?",
+    "a3": "Non. Le contenu privé nécessite une connexion au compte, pour des raisons de sécurité et de confidentialité.",
+    "q4": "Quelles qualités sont disponibles ?",
+    "a4": "Toutes les résolutions proposées par Twitter / X pour la vidéo, affichées avec leur taille de fichier.",
+    "q5": "Sur quels appareils ça fonctionne ?",
+    "a5": "Sur n'importe quel navigateur récent, que tu sois sur mobile, tablette ou ordinateur.",
+    "q6": "Est-ce légal de télécharger une vidéo ?",
+    "a6": "Pour un usage personnel, c'est généralement accepté. Respecte les droits des créateurs et n'utilise pas leur contenu sans autorisation."
+  },
+  "footer": {
+    "tagline": "Télécharge gratuitement des vidéos Twitter / X en quelques secondes.",
+    "disclaimer": "Service non affilié à X Corp. / Twitter. Les marques et contenus appartiennent à leurs propriétaires respectifs.",
+    "rights": "Tous droits réservés.",
+    "legal": "Légal"
+  },
+  "pages": {
+    "about": {
+      "title": "À propos",
+      "paragraphs": [
+        "Twitter Video Downloader est un outil en ligne gratuit qui te permet d'enregistrer des vidéos et des GIF de Twitter / X à partir du simple lien d'un tweet.",
+        "Notre objectif est simple : offrir le moyen le plus rapide et le plus propre de télécharger une vidéo Twitter dans la qualité de ton choix, sans inscription et sans logiciel à installer.",
+        "Nous ne sommes pas affiliés à X Corp. ni à Twitter. Nous n'hébergeons aucune vidéo sur nos serveurs — nous t'aidons seulement à récupérer des médias accessibles publiquement, pour un usage personnel."
+      ]
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "paragraphs": [
+        "Nous respectons ta vie privée. Aucun compte n'est nécessaire et nous ne demandons aucune information personnelle pour utiliser le téléchargeur.",
+        "Lorsque tu soumets un lien de tweet, il est traité uniquement pour récupérer les qualités de vidéo disponibles. Nous conservons des données d'usage anonymes et agrégées (comme le nombre de téléchargements et d'erreurs) pour faire fonctionner et améliorer le service.",
+        "Nous n'hébergeons ni ne conservons les vidéos téléchargées sur nos serveurs. Nous pouvons utiliser des cookies d'analyse et de publicité ; tu peux les contrôler depuis les réglages de ton navigateur.",
+        "Pour toute question concernant tes données, contacte-nous via la page Contact."
+      ]
+    },
+    "terms": {
+      "title": "Conditions d'utilisation",
+      "paragraphs": [
+        "En utilisant ce site, tu acceptes ces conditions. Le service est fourni « tel quel », sans garantie d'aucune sorte.",
+        "Tu peux utiliser le téléchargeur uniquement à des fins personnelles et non commerciales. Tu es responsable du respect du droit d'auteur et des droits des créateurs de contenu.",
+        "Le téléchargement de contenu privé, ou de contenu que tu n'es pas autorisé à utiliser, n'est pas permis. Nous ne sommes pas responsables de l'usage que tu fais des fichiers téléchargés.",
+        "Nous ne sommes pas affiliés à X Corp. ni à Twitter. Nous pouvons mettre à jour ces conditions à tout moment."
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "paragraphs": [
+        "Une question, un bug à signaler ou une idée de partenariat ? Nous serions ravis d'avoir de tes nouvelles.",
+        "Écris-nous par e-mail et nous te répondrons dès que possible."
+      ],
+      "email": "contact@example.com"
+    }
+  },
+  "admin": {
+    "title": "Espace Admin",
+    "desc": "Vue rapide des téléchargements, des derniers liens utilisés et des erreurs.",
+    "loading": "Chargement...",
+    "loadError": "Impossible de charger les statistiques.",
+    "statsDownloads": "Téléchargements",
+    "statsRecentLinks": "Liens récents",
+    "statsErrors": "Erreurs",
+    "recentLinks": "Derniers liens",
+    "lastErrors": "Dernières erreurs",
+    "noLinks": "Aucun téléchargement pour le moment.",
+    "noErrors": "Aucune erreur signalée.",
+    "loginTitle": "Connexion administrateur",
+    "loginDesc": "Saisissez le mot de passe admin pour accéder aux statistiques.",
+    "passwordPlaceholder": "Mot de passe admin",
+    "loginButton": "Se connecter",
+    "logoutButton": "Se déconnecter",
+    "authError": "Mot de passe invalide.",
+    "formatStats": "Statistiques par format",
+    "qualityStats": "Statistiques par qualité",
+    "welcome": "Bienvenue, {{username}}",
+    "authRequired": "Authentification requise",
+    "statsTitle": "Statistiques",
+    "popularFormats": "Formats populaires",
+    "totalDownloads": "Téléchargements totaux",
+    "totalErrors": "Erreurs totales",
+    "loginPageDesc": "Entrez vos identifiants pour accéder aux statistiques",
+    "backHome": "← Retour à l'accueil",
+    "usernameLabel": "Nom d'utilisateur",
+    "passwordLabel": "Mot de passe",
+    "loginRequired": "Identifiants requis.",
+    "loginError": "Erreur de connexion",
+    "connecting": "Connexion..."
+  },
+  "consent": {
+    "text": "Nous utilisons des cookies pour les statistiques et la publicité.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "more": "En savoir plus"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "desc": "La page que tu cherches n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil"
+  }
+}
