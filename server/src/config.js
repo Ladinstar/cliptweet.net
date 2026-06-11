@@ -50,6 +50,7 @@ export const config = {
       { id: 'instagram', hosts: ['instagram.com', 'www.instagram.com'] },
       { id: 'tiktok', hosts: ['tiktok.com', 'www.tiktok.com', 'vm.tiktok.com', 'vt.tiktok.com', 'm.tiktok.com'] },
       { id: 'facebook', hosts: ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'] },
+      { id: 'youtube', hosts: ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be', 'music.youtube.com'] },
     ],
     // Media CDN host suffixes allowed by the streaming proxy (anti-SSRF, suffix match).
     allowedMediaHostSuffixes: [
@@ -61,6 +62,7 @@ export const config = {
       'tiktokcdn.com',
       'tiktokcdn-us.com',
       'muscdn.com',
+      'googlevideo.com',
     ],
     // Max concurrent yt-dlp processes.
     concurrency: Number(process.env.DOWNLOAD_CONCURRENCY || 2),
@@ -68,6 +70,8 @@ export const config = {
     timeoutMs: Number(process.env.DOWNLOAD_TIMEOUT_MS || 30000),
     // Hard timeout for the (slower) MP3 download+transcode.
     audioTimeoutMs: Number(process.env.AUDIO_TIMEOUT_MS || 90000),
+    // Hard timeout for server-side video+audio merge (HD/4K can be big).
+    mergeTimeoutMs: Number(process.env.MERGE_TIMEOUT_MS || 180000),
     // In-memory cache TTL for resolved formats (avoids re-running yt-dlp).
     cacheTtlMs: Number(process.env.FORMATS_CACHE_TTL_MS || 10 * 60 * 1000),
     // Reject media proxy responses larger than this (anti-abuse / bandwidth).

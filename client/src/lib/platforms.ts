@@ -13,6 +13,7 @@ export const PLATFORMS: Platform[] = [
   { id: 'instagram', name: 'Instagram', icon: '📸', example: 'https://www.instagram.com/reel/Cxyz/' },
   { id: 'reddit', name: 'Reddit', icon: '👽', example: 'https://www.reddit.com/r/sub/comments/abc/title/' },
   { id: 'facebook', name: 'Facebook', icon: '📘', example: 'https://www.facebook.com/watch/?v=1234567890' },
+  { id: 'youtube', name: 'YouTube', icon: '▶️', example: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
 ];
 
 export const PLATFORM_IDS = PLATFORMS.map((p) => p.id);

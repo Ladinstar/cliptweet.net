@@ -11,7 +11,7 @@
   "home": {
     "heroTag": "Free & no sign-up",
     "heroTitle": "Download any video in one click.",
-    "heroDesc": "Paste a link from Twitter/X, TikTok, Instagram, Reddit or Facebook, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+    "heroDesc": "Paste a link from Twitter/X, YouTube, TikTok, Instagram, Reddit or Facebook, choose the quality and get your MP4 in seconds. Free, no sign-up.",
     "resultTitle": "Your video",
     "resultDesc": "When the link is valid, pick a resolution and the download starts right away.",
     "inputLabel": "Video link",
@@ -40,9 +40,10 @@
     "downloadStarted": "Download started. If nothing happens, use the button below.",
     "recentTitle": "Recent",
     "clearHistory": "Clear",
-    "supported": "Also works with Reddit, Instagram, TikTok & Facebook",
+    "supported": "Also works with YouTube, Reddit, Instagram, TikTok & Facebook",
     "socialProof_one": "{{count}} video downloaded",
-    "socialProof_other": "{{count}} videos downloaded"
+    "socialProof_other": "{{count}} videos downloaded",
+    "mergeHint": "HD — merged on our server, may take a little longer."
   },
   "steps": {
     "title": "How to download a video in 3 steps?",
@@ -216,6 +217,13 @@
       "heroDesc": "Paste a Facebook link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
       "intro": "Our Facebook downloader lets you save any public Facebook video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
     },
-    "gridTitle": "Choose a platform"
+    "gridTitle": "Choose a platform",
+    "youtube": {
+      "name": "YouTube",
+      "title": "YouTube Video Downloader — download YouTube videos in MP4",
+      "heroTitle": "Download a YouTube video in one click.",
+      "heroDesc": "Paste a YouTube link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our YouTube downloader lets you save public YouTube videos as MP4, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    }
   }
 }

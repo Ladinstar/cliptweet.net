@@ -28,6 +28,11 @@ export const buildAudioUrl = (tweetUrl: string, format: 'mp3' | 'm4a' = 'mp3'): 
   return `${API_BASE_URL}/audio?${params.toString()}`;
 };
 
+export const buildVideoUrl = (tweetUrl: string, formatId: string): string => {
+  const params = new URLSearchParams({ url: tweetUrl, formatId });
+  return `${API_BASE_URL}/video?${params.toString()}`;
+};
+
 export const buildFilename = (uploader: string | null | undefined, title: string): string =>
   [uploader, title].filter(Boolean).join(' - ') || 'twitter-video';
 

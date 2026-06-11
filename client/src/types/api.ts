@@ -21,6 +21,7 @@ export interface VideoFormat {
   filesizeBytes: number | null;
   tbr: number | null;
   url: string | null;
+  needsMerge?: boolean;
 }
 
 export interface FormatsRequest {

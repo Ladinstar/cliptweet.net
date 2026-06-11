@@ -11,7 +11,7 @@
   "home": {
     "heroTag": "Gratuit & sans inscription",
     "heroTitle": "Télécharge n'importe quelle vidéo en un clic.",
-    "heroDesc": "Colle un lien Twitter/X, TikTok, Instagram, Reddit ou Facebook, choisis la qualité et récupère ta vidéo MP4 en quelques secondes. Gratuit, sans inscription.",
+    "heroDesc": "Colle un lien Twitter/X, YouTube, TikTok, Instagram, Reddit ou Facebook, choisis la qualité et récupère ta vidéo MP4 en quelques secondes. Gratuit, sans inscription.",
     "resultTitle": "Ta vidéo",
     "resultDesc": "Quand le lien est valide, choisis la résolution et le téléchargement démarre aussitôt.",
     "inputLabel": "Lien de la vidéo",
@@ -40,9 +40,10 @@
     "downloadStarted": "Téléchargement lancé. Si rien ne se passe, utilise le bouton ci-dessous.",
     "recentTitle": "Récents",
     "clearHistory": "Effacer",
-    "supported": "Fonctionne aussi avec Reddit, Instagram, TikTok et Facebook",
+    "supported": "Fonctionne aussi avec YouTube, Reddit, Instagram, TikTok et Facebook",
     "socialProof_one": "{{count}} vidéo téléchargée",
-    "socialProof_other": "{{count}} vidéos téléchargées"
+    "socialProof_other": "{{count}} vidéos téléchargées",
+    "mergeHint": "HD — fusionné sur notre serveur, peut prendre un peu plus de temps."
   },
   "steps": {
     "title": "Comment télécharger une vidéo en 3 étapes ?",
@@ -216,6 +217,13 @@
       "heroDesc": "Colle le lien d'une publication Facebook, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
       "intro": "Notre téléchargeur Facebook te permet d'enregistrer n'importe quelle vidéo publique de Facebook en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
     },
-    "gridTitle": "Choisis une plateforme"
+    "gridTitle": "Choisis une plateforme",
+    "youtube": {
+      "name": "YouTube",
+      "title": "Téléchargeur de vidéos YouTube — vidéos YouTube en MP4",
+      "heroTitle": "Télécharge une vidéo YouTube en un clic.",
+      "heroDesc": "Colle le lien d'une vidéo YouTube, choisis la qualité et récupère ton MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur YouTube te permet d'enregistrer des vidéos YouTube publiques en MP4, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    }
   }
 }

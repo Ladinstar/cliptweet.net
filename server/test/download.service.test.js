@@ -12,6 +12,8 @@ test('parseSourceUrl accepts other supported platforms', () => {
   assert.equal(parseSourceUrl('https://www.reddit.com/r/x/comments/abc/title/').platform, 'reddit');
   assert.equal(parseSourceUrl('https://www.tiktok.com/@u/video/123').platform, 'tiktok');
   assert.equal(parseSourceUrl('https://www.instagram.com/reel/abc/').platform, 'instagram');
+  assert.equal(parseSourceUrl('https://www.youtube.com/watch?v=abc123').platform, 'youtube');
+  assert.equal(parseSourceUrl('https://youtu.be/abc123').platform, 'youtube');
 });
 
 test('parseSourceUrl rejects non-whitelisted hosts (anti-SSRF)', () => {

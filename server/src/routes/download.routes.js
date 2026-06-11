@@ -6,10 +6,11 @@ import {
   listFormats,
   assertAllowedMediaUrl,
   downloadAudioToTemp,
+  downloadMergedToTemp,
   sanitizeFilename,
 } from '../services/download.service.js';
 import { getPublicStats } from '../services/stats.service.js';
-import { downloadLimiter, audioLimiter } from '../middlewares/rateLimit.middleware.js';
+import { downloadLimiter, audioLimiter, videoLimiter } from '../middlewares/rateLimit.middleware.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { config } from '../config.js';
 
@@ -59,6 +60,37 @@ downloadRouter.get(
     } catch {
       cleanup();
       res.status(500).json({ error: 'Audio indisponible.' });
+      return;
+    }
+
+    const stream = createReadStream(file);
+    stream.on('error', cleanup);
+    stream.on('close', cleanup);
+    res.on('close', cleanup);
+    stream.pipe(res);
+  }),
+);
+
+// Server-side video+audio merge (yt-dlp + ffmpeg) for HD/4K DASH formats.
+downloadRouter.get(
+  '/video',
+  videoLimiter,
+  asyncHandler(async (req, res) => {
+    const { dir, file, title } = await downloadMergedToTemp(
+      String(req.query.url || ''),
+      String(req.query.formatId || ''),
+    );
+    const cleanup = () => rm(dir, { recursive: true, force: true }).catch(() => {});
+    const name = sanitizeFilename(title);
+
+    try {
+      const { size } = await stat(file);
+      res.setHeader('Content-Type', 'video/mp4');
+      res.setHeader('Content-Length', size);
+      res.setHeader('Content-Disposition', `attachment; filename="${name}.mp4"`);
+    } catch {
+      cleanup();
+      res.status(500).json({ error: 'Vidéo indisponible.' });
       return;
     }
 

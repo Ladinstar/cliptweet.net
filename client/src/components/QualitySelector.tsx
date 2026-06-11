@@ -25,7 +25,7 @@ export default function QualitySelector({ data, onDownload, downloadingId }: Qua
   const busy = downloadingId !== null;
 
   // Use the lowest-resolution progressive variant for a lightweight preview.
-  const previewFormat = [...data.formats].reverse().find((f) => f.url);
+  const previewFormat = [...data.formats].reverse().find((f) => f.url && !f.needsMerge);
   const previewSrc = previewFormat?.url ? buildMediaUrl(previewFormat.url, 'preview') : null;
 
   return (
@@ -82,6 +82,14 @@ export default function QualitySelector({ data, onDownload, downloadingId }: Qua
                     <span className="rounded-md bg-slate-200 px-2 py-0.5 text-[10px] font-semibold uppercase text-slate-600 dark:bg-slate-700 dark:text-slate-300">
                       {f.ext}
                     </span>
+                    {f.needsMerge && (
+                      <span
+                        title={t('home.mergeHint')}
+                        className="rounded-md bg-amber-400/20 px-2 py-0.5 text-[10px] font-semibold uppercase text-amber-600 dark:text-amber-300"
+                      >
+                        HD
+                      </span>
+                    )}
                   </span>
                   <span className="flex items-center gap-3">
                     <span className="text-sm font-medium text-slate-500 dark:text-slate-400">

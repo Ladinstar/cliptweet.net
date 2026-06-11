@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDownload, useFormats } from '@/hooks/useApi';
-import { buildMediaUrl, buildAudioUrl, buildFilename } from '@/utils/api';
+import { buildMediaUrl, buildAudioUrl, buildVideoUrl, buildFilename } from '@/utils/api';
 import { useTheme } from '@/context/ThemeContext';
 import { useToast } from '@/context/ToastContext';
 import { addHistory } from '@/utils/history';
@@ -93,7 +93,36 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
     }
   };
 
+  // HD/4K DASH formats have no audio track → merge server-side (yt-dlp + ffmpeg) then stream.
+  const downloadMerged = async (formatId: string) => {
+    setDownloadingId(formatId);
+    try {
+      const response = await fetch(buildVideoUrl(tweetUrl, formatId));
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || t('home.requestError'));
+      }
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const filename = buildFilename(formats.data?.uploader, formats.data?.title || 'video');
+      triggerBrowserDownload(objectUrl, `${filename}.mp4`);
+      URL.revokeObjectURL(objectUrl);
+      if (formats.data) addHistory({ url: tweetUrl, title: formats.data.title, thumbnail: formats.data.thumbnail });
+      trackEvent('download', { format: 'mp4', quality: formatId, merged: true });
+      toast(t('home.downloadStarted'), 'success');
+    } catch (err) {
+      toast(err instanceof Error ? err.message : t('home.requestError'), 'error');
+    } finally {
+      setDownloadingId(null);
+    }
+  };
+
   const handleDownloadFormat = (formatId: string) => {
+    const fmt = formats.data?.formats.find((f) => f.id === formatId);
+    if (fmt?.needsMerge) {
+      downloadMerged(formatId);
+      return;
+    }
     setDownloadingId(formatId);
     download.mutate(
       { tweetUrl, format: 'mp4', formatId },

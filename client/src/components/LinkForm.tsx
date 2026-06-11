@@ -25,7 +25,8 @@ export default function LinkForm({ onSubmit, loading, format, onFormatChange, pl
 
   const submitLabel = format === 'mp4' ? t('home.analyzeButton') : t('home.downloadButton');
 
-  const LINK_RE = /(twitter\.com|x\.com|reddit\.com|redd\.it|instagram\.com|tiktok\.com|facebook\.com|fb\.watch)\//i;
+  const LINK_RE =
+    /(twitter\.com|x\.com|reddit\.com|redd\.it|instagram\.com|tiktok\.com|facebook\.com|fb\.watch|youtube\.com|youtu\.be)\//i;
 
   // Auto-analyze on paste for the video (mp4) flow — removes a click.
   const maybeAuto = (url: string) => {

@@ -19,5 +19,9 @@ coverage
 playwright-report
 test-results
 
+# Secrets / cookies (never commit YouTube/IG session cookies)
+cookies.txt
+**/cookies.txt
+
 # Misc
 server/database.sqlite

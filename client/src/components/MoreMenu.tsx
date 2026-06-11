@@ -34,34 +34,46 @@ export default function MoreMenu() {
   ];
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         className="text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
       >
-        {t('header.more')} ▾
+        {t('header.more')}
       </button>
 
       {open && (
-        <div className={`absolute right-0 z-50 mt-3 w-64 rounded-2xl border ${panelClass} p-3 shadow-xl`}>
-          <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{t('footer.tools')}</p>
-          {PLATFORMS.map((p) => (
-            <Link key={p.id} href={localeHref(locale, `/${p.id}`)} className={linkClass} onClick={() => setOpen(false)}>
-              <span className="mr-2" aria-hidden="true">
-                {p.icon}
-              </span>
-              {p.name}
-            </Link>
-          ))}
-          <div className="my-2 border-t border-slate-200 dark:border-slate-700" />
-          <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{t('footer.legal')}</p>
-          {legal.map((item) => (
-            <Link key={item.href} href={item.href} className={linkClass} onClick={() => setOpen(false)}>
-              {item.label}
-            </Link>
-          ))}
+        // pt-3 is a transparent "bridge" so the menu stays open while moving the cursor onto it.
+        <div className="absolute right-0 top-full z-50 pt-3">
+          <div className={`w-64 rounded-2xl border ${panelClass} p-3 shadow-xl`}>
+            <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+              {t('footer.tools')}
+            </p>
+            {PLATFORMS.map((p) => (
+              <Link
+                key={p.id}
+                href={localeHref(locale, `/${p.id}`)}
+                className={linkClass}
+                onClick={() => setOpen(false)}
+              >
+                <span className="mr-2" aria-hidden="true">
+                  {p.icon}
+                </span>
+                {p.name}
+              </Link>
+            ))}
+            <div className="my-2 border-t border-slate-200 dark:border-slate-700" />
+            <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+              {t('footer.legal')}
+            </p>
+            {legal.map((item) => (
+              <Link key={item.href} href={item.href} className={linkClass} onClick={() => setOpen(false)}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

@@ -39,7 +39,8 @@
     "downloadHint": "انقر على جودة لبدء التنزيل. يمكنك تنزيل عدة جودات.",
     "downloadStarted": "بدأ التنزيل. إذا لم يحدث شيء، استخدم الزر أدناه.",
     "recentTitle": "الأخيرة",
-    "clearHistory": "مسح"
+    "clearHistory": "مسح",
+    "mergeHint": "HD — يتم الدمج على خادمنا، قد يستغرق وقتًا أطول قليلًا."
   },
   "steps": {
     "title": "كيفية تنزيل فيديو في 3 خطوات؟",
@@ -132,6 +133,9 @@
     "facebook": {
       "name": "Facebook"
     },
-    "gridTitle": "اختر منصة"
+    "gridTitle": "اختر منصة",
+    "youtube": {
+      "name": "YouTube"
+    }
   }
 }

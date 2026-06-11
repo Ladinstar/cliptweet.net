@@ -61,7 +61,7 @@ export function parseSourceUrl(rawUrl) {
   const host = parsed.hostname.toLowerCase();
   const platform = config.download.platforms.find((p) => p.hosts.includes(host));
   if (!platform) {
-    throw badRequest('Plateforme non supportée (Twitter/X, Reddit, Instagram, TikTok, Facebook).');
+    throw badRequest('Plateforme non supportée (Twitter/X, YouTube, Reddit, Instagram, TikTok, Facebook).');
   }
 
   if (parsed.pathname.replace(/\/+$/, '').length < 2) {
@@ -132,10 +132,25 @@ export async function listFormats(tweetUrl) {
       config.download.timeoutMs,
     );
 
-    const seen = new Set();
-    const formats = (result?.formats || [])
-      .filter((f) => String(f.protocol || '').startsWith('http') && f.ext === 'mp4' && f.height)
-      .filter((f) => (seen.has(f.height) ? false : seen.add(f.height)))
+    // Keep http(s) MP4 with a video height. A format is "muxed" (directly downloadable)
+    // when it has audio; video-only DASH formats (acodec 'none') need server-side merge.
+    const candidates = (result?.formats || []).filter(
+      (f) => String(f.protocol || '').startsWith('http') && f.ext === 'mp4' && f.height,
+    );
+    const hasAudio = (f) => f.acodec !== 'none';
+    // One entry per resolution, preferring a muxed format over a merge-only one.
+    const byHeight = new Map();
+    for (const f of candidates) {
+      const cur = byHeight.get(f.height);
+      if (!cur) {
+        byHeight.set(f.height, f);
+        continue;
+      }
+      const better =
+        (hasAudio(f) && !hasAudio(cur)) || (hasAudio(f) === hasAudio(cur) && (f.tbr || 0) > (cur.tbr || 0));
+      if (better) byHeight.set(f.height, f);
+    }
+    const formats = [...byHeight.values()]
       .map((f) => ({
         id: f.format_id,
         width: f.width || null,
@@ -145,6 +160,7 @@ export async function listFormats(tweetUrl) {
         filesizeBytes: f.filesize || f.filesize_approx || null,
         tbr: f.tbr ? Math.round(f.tbr) : null,
         url: f.url || null,
+        needsMerge: !hasAudio(f),
       }))
       .sort((a, b) => (b.height || 0) - (a.height || 0));
 
@@ -295,5 +311,63 @@ export async function downloadAudioToTemp(tweetUrl, audioFormat = 'mp3') {
       timestamp: new Date().toISOString(),
     });
     throw serverError("Échec de l'extraction audio, vérifiez le lien ou réessayez.");
+  }
+}
+
+/**
+ * Downloads a (usually DASH, audio-less) video format together with the best audio and
+ * merges them into a single MP4 in a temp dir (needs ffmpeg). Used for HD/4K on YouTube,
+ * Reddit, etc. where no progressive muxed file exists. Caller removes `dir` after streaming.
+ */
+export async function downloadMergedToTemp(tweetUrl, formatId) {
+  const { normalizedUrl } = parseSourceUrl(tweetUrl);
+  if (!FORMAT_ID_RE.test(formatId)) {
+    throw badRequest('Identifiant de format invalide.');
+  }
+  const { downloads, errors } = getCollections();
+  const dir = await mkdtemp(join(tmpdir(), 'tvd-'));
+
+  try {
+    const result = await runYtDlp(
+      normalizedUrl,
+      {
+        noWarnings: true,
+        noCallHome: true,
+        noPlaylist: true,
+        format: `${formatId}+bestaudio/best`,
+        mergeOutputFormat: 'mp4',
+        output: join(dir, 'video.%(ext)s'),
+        printJson: true,
+        socketTimeout: Math.ceil(config.download.timeoutMs / 1000),
+      },
+      config.download.mergeTimeoutMs,
+    );
+
+    const files = await readdir(dir);
+    const mp4 = files.find((name) => name.endsWith('.mp4')) || files[0];
+    if (!mp4) {
+      throw new Error('Fusion vidéo impossible.');
+    }
+
+    const title = result?.title || 'Video';
+    await downloads.insertOne({
+      url: normalizedUrl,
+      title,
+      format: 'mp4',
+      quality: `merge:${formatId}`,
+      timestamp: new Date().toISOString(),
+    });
+
+    return { dir, file: join(dir, mp4), title };
+  } catch (error) {
+    await rm(dir, { recursive: true, force: true }).catch(() => {});
+    const message = error?.stderr || error?.message || 'Erreur inconnue';
+    logger.warn({ err: message, url: normalizedUrl }, 'Video merge failed');
+    await errors.insertOne({
+      url: normalizedUrl,
+      message: String(message).slice(0, 2000),
+      timestamp: new Date().toISOString(),
+    });
+    throw serverError('Échec de la fusion vidéo, réessayez ou choisissez une autre qualité.');
   }
 }

@@ -39,7 +39,8 @@
     "downloadHint": "Kliknij jakość, aby rozpocząć pobieranie. Możesz pobrać kilka.",
     "downloadStarted": "Pobieranie rozpoczęte. Jeśli nic się nie dzieje, użyj przycisku poniżej.",
     "recentTitle": "Ostatnie",
-    "clearHistory": "Wyczyść"
+    "clearHistory": "Wyczyść",
+    "mergeHint": "HD — łączone na naszym serwerze, może potrwać nieco dłużej."
   },
   "steps": {
     "title": "Jak pobrać wideo w 3 krokach?",
@@ -132,6 +133,9 @@
     "facebook": {
       "name": "Facebook"
     },
-    "gridTitle": "Wybierz platformę"
+    "gridTitle": "Wybierz platformę",
+    "youtube": {
+      "name": "YouTube"
+    }
   }
 }

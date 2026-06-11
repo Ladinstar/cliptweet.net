@@ -31,6 +31,15 @@ export const audioLimiter = rateLimit({
   message: { error: 'Trop de conversions audio, réessayez dans une minute.' },
 });
 
+// Server-side video merge (download + ffmpeg) is the heaviest op — limit hard.
+export const videoLimiter = rateLimit({
+  ...common,
+  windowMs: 60 * 1000,
+  max: 3,
+  store: makeStore('rl:video:'),
+  message: { error: 'Trop de fusions vidéo, réessayez dans une minute.' },
+});
+
 export const loginLimiter = rateLimit({
   ...common,
   windowMs: 15 * 60 * 1000,

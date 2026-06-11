@@ -4,8 +4,12 @@ WORKDIR /app
 
 # python3 + build tools for native deps; ffmpeg for mp3 extraction / format merging.
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends python3 python-is-python3 make g++ ffmpeg ca-certificates wget \
+  && apt-get install -y --no-install-recommends python3 python-is-python3 make g++ ffmpeg ca-certificates wget curl unzip \
   && rm -rf /var/lib/apt/lists/*
+
+# JS runtime (deno) — newer yt-dlp needs it for complete YouTube extraction.
+RUN curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh \
+  && /usr/local/bin/deno --version || true
 
 COPY package.json package-lock.json* ./
 RUN npm ci --omit=dev

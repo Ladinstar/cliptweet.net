@@ -99,3 +99,24 @@ task clean        # down + suppression des volumes (⚠️ efface MongoDB)
 - `AdBanner` est un placeholder : remplace-le par un vrai code d'annonce (AdSense, etc.).
 - `yt-dlp` casse régulièrement quand X change son HTML : pense à le mettre à jour (`yt-dlp -U`)
   et à rebuild l'image `api`.
+- **HD / 4K (YouTube, Reddit…)** : ces plateformes servent la HD en flux **séparés (DASH)**. Le serveur
+  les **fusionne** (yt-dlp + ffmpeg) via `/api/video` — les qualités concernées portent le badge **HD**.
+
+## Activer YouTube (cookies)
+
+YouTube bloque l'extraction depuis un serveur/datacenter (`HTTP 429`, « Sign in to confirm you're not a
+bot »). Pour le faire fonctionner, fournis un fichier **cookies.txt** d'une session YouTube connectée :
+
+1. Exporte tes cookies au format Netscape (extension navigateur « Get cookies.txt LOCALLY ») → `cookies.txt`.
+2. Place-le dans `server/` (il est **git-ignoré**) et expose-le au conteneur, dans `docker-compose.yml` → service `api` :
+   ```yaml
+   volumes:
+     - ./server/cookies.txt:/run/cookies.txt:ro
+   environment:
+     - YT_DLP_COOKIES=/run/cookies.txt
+   ```
+3. `task rebuild` (ou `docker compose up -d --build api`).
+
+> L'image `api` embarque **ffmpeg** (fusion/MP3) et **deno** (runtime JS requis par yt-dlp pour
+> l'extraction YouTube complète). Sans cookies valides, YouTube reste bloqué — c'est une protection de Google,
+> pas un bug. Twitter/X et Reddit fonctionnent sans cookies.

@@ -39,7 +39,8 @@
     "downloadHint": "Klik op een kwaliteit om de download te starten. Je kunt er meerdere downloaden.",
     "downloadStarted": "Download gestart. Gebeurt er niets, gebruik dan de knop hieronder.",
     "recentTitle": "Recent",
-    "clearHistory": "Wissen"
+    "clearHistory": "Wissen",
+    "mergeHint": "HD — samengevoegd op onze server, kan iets langer duren."
   },
   "steps": {
     "title": "Hoe download je een video in 3 stappen?",
@@ -132,6 +133,9 @@
     "facebook": {
       "name": "Facebook"
     },
-    "gridTitle": "Kies een platform"
+    "gridTitle": "Kies een platform",
+    "youtube": {
+      "name": "YouTube"
+    }
   }
 }

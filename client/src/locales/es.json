@@ -39,7 +39,8 @@
     "downloadHint": "Haz clic en una calidad para iniciar la descarga. Puedes descargar varias.",
     "downloadStarted": "Descarga iniciada. Si no ocurre nada, usa el botón de abajo.",
     "recentTitle": "Recientes",
-    "clearHistory": "Borrar"
+    "clearHistory": "Borrar",
+    "mergeHint": "HD — combinado en nuestro servidor, puede tardar un poco más."
   },
   "steps": {
     "title": "¿Cómo descargar un vídeo en 3 pasos?",
@@ -168,6 +169,9 @@
     "facebook": {
       "name": "Facebook"
     },
-    "gridTitle": "Elige una plataforma"
+    "gridTitle": "Elige una plataforma",
+    "youtube": {
+      "name": "YouTube"
+    }
   }
 }
