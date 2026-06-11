@@ -30,7 +30,7 @@ cp server/.env.example server/.env   # puis éditer ADMIN_PASSWORD / JWT_SECRET
 task up         # docker compose up --build -d
 ```
 
-Puis visiter **http://localhost:8080**.
+Puis visiter **http://localhost:8090**.
 
 > Génère un vrai secret JWT avec `openssl rand -hex 32`.
 

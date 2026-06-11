@@ -62,6 +62,8 @@ jobs:
         with:
           node-version: 20
       - name: Start the stack
+        env:
+          WEB_PORT: 8080
         run: |
           printf 'ADMIN_USERNAME=admin\nADMIN_PASSWORD=admin123\nJWT_SECRET=ci-only-secret-0123456789abcdef\n' > server/.env
           docker compose up -d --build

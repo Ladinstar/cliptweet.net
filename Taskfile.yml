@@ -104,7 +104,7 @@ tasks:
     desc: Start the full stack with Docker Compose (build + detached)
     cmds:
       - '{{.COMPOSE}} up --build -d'
-      - 'echo "App: http://localhost:8080"'
+      - 'echo "App: http://localhost:8090"'
 
   down:
     desc: Stop the stack

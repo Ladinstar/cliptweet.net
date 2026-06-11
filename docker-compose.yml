@@ -59,7 +59,8 @@ services:
         NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
     restart: unless-stopped
     ports:
-      - '8080:80'
+      # Host port configurable to avoid clashes with other local stacks (quable uses 8080).
+      - '${WEB_PORT:-8090}:80'
     depends_on:
       api:
         condition: service_healthy
