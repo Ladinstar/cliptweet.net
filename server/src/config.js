@@ -42,10 +42,26 @@ export const config = {
   },
 
   download: {
-    // Hostnames allowed as tweet sources (anti-SSRF whitelist).
-    allowedHosts: ['twitter.com', 'www.twitter.com', 'x.com', 'www.x.com', 'mobile.twitter.com'],
-    // Hostnames allowed for the media streaming proxy.
-    allowedMediaHosts: ['video.twimg.com', 'pbs.twimg.com'],
+    // Supported source platforms (anti-SSRF whitelist). Twitter/X + Reddit work as
+    // guest; Instagram/TikTok/Facebook usually need YT_DLP_COOKIES to be set.
+    platforms: [
+      { id: 'twitter', hosts: ['twitter.com', 'www.twitter.com', 'x.com', 'www.x.com', 'mobile.twitter.com'] },
+      { id: 'reddit', hosts: ['reddit.com', 'www.reddit.com', 'old.reddit.com', 'v.redd.it'] },
+      { id: 'instagram', hosts: ['instagram.com', 'www.instagram.com'] },
+      { id: 'tiktok', hosts: ['tiktok.com', 'www.tiktok.com', 'vm.tiktok.com', 'vt.tiktok.com', 'm.tiktok.com'] },
+      { id: 'facebook', hosts: ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'] },
+    ],
+    // Media CDN host suffixes allowed by the streaming proxy (anti-SSRF, suffix match).
+    allowedMediaHostSuffixes: [
+      'twimg.com',
+      'redd.it',
+      'redditmedia.com',
+      'cdninstagram.com',
+      'fbcdn.net',
+      'tiktokcdn.com',
+      'tiktokcdn-us.com',
+      'muscdn.com',
+    ],
     // Max concurrent yt-dlp processes.
     concurrency: Number(process.env.DOWNLOAD_CONCURRENCY || 2),
     // yt-dlp timeout in milliseconds.

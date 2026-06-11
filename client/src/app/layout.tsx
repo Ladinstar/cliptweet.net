@@ -3,6 +3,7 @@ import Providers from './providers';
 import './globals.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://twitter-video-downloader.example';
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg' },
   manifest: '/manifest.webmanifest',
   appleWebApp: { capable: true, title: 'TVD', statusBarStyle: 'black-translucent' },
+  // Static AdSense verification (works even without JS execution).
+  ...(ADSENSE_CLIENT ? { other: { 'google-adsense-account': ADSENSE_CLIENT } } : {}),
 };
 
 export const viewport: Viewport = {

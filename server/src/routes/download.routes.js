@@ -8,11 +8,19 @@ import {
   downloadAudioToTemp,
   sanitizeFilename,
 } from '../services/download.service.js';
+import { getPublicStats } from '../services/stats.service.js';
 import { downloadLimiter, audioLimiter } from '../middlewares/rateLimit.middleware.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { config } from '../config.js';
 
 export const downloadRouter = Router();
+
+downloadRouter.get(
+  '/stats',
+  asyncHandler(async (_req, res) => {
+    res.json(await getPublicStats());
+  }),
+);
 
 downloadRouter.post(
   '/formats',

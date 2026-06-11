@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "Téléchargez des vidéos Twitter en quelques secondes."
+    "subtitle": "Téléchargez des vidéos Twitter en quelques secondes.",
+    "more": "Plus"
   },
   "home": {
     "heroTag": "Gratuit & sans inscription",
-    "heroTitle": "Télécharge ta vidéo Twitter en un clic.",
-    "heroDesc": "Colle le lien d'un tweet, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription et sans logiciel à installer.",
+    "heroTitle": "Télécharge n'importe quelle vidéo en un clic.",
+    "heroDesc": "Colle un lien Twitter/X, TikTok, Instagram, Reddit ou Facebook, choisis la qualité et récupère ta vidéo MP4 en quelques secondes. Gratuit, sans inscription.",
     "resultTitle": "Ta vidéo",
     "resultDesc": "Quand le lien est valide, choisis la résolution et le téléchargement démarre aussitôt.",
-    "inputLabel": "Lien du tweet",
+    "inputLabel": "Lien de la vidéo",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "Télécharger maintenant",
     "download": "Télécharger",
@@ -38,13 +39,16 @@
     "downloadHint": "Clique sur une qualité pour lancer le téléchargement. Tu peux en télécharger plusieurs.",
     "downloadStarted": "Téléchargement lancé. Si rien ne se passe, utilise le bouton ci-dessous.",
     "recentTitle": "Récents",
-    "clearHistory": "Effacer"
+    "clearHistory": "Effacer",
+    "supported": "Fonctionne aussi avec Reddit, Instagram, TikTok et Facebook",
+    "socialProof_one": "{{count}} vidéo téléchargée",
+    "socialProof_other": "{{count}} vidéos téléchargées"
   },
   "steps": {
-    "title": "Comment télécharger une vidéo Twitter / X ?",
+    "title": "Comment télécharger une vidéo en 3 étapes ?",
     "subtitle": "En 3 étapes, sur ordinateur comme sur mobile.",
     "step1Title": "Copie le lien du tweet",
-    "step1Desc": "Sur Twitter / X, appuie sur l'icône Partager sous le tweet, puis sur « Copier le lien ».",
+    "step1Desc": "Sur {{platform}}, appuie sur l'icône Partager sous le tweet, puis sur « Copier le lien ».",
     "step2Title": "Colle le lien",
     "step2Desc": "Colle le lien dans le champ ci-dessus et clique sur « Voir les qualités ».",
     "step3Title": "Choisis et télécharge",
@@ -74,7 +78,7 @@
     "q3": "Puis-je télécharger des vidéos privées ?",
     "a3": "Non. Le contenu privé nécessite une connexion au compte, pour des raisons de sécurité et de confidentialité.",
     "q4": "Quelles qualités sont disponibles ?",
-    "a4": "Toutes les résolutions proposées par Twitter / X pour la vidéo, affichées avec leur taille de fichier.",
+    "a4": "Toutes les résolutions proposées par {{platform}} pour la vidéo, affichées avec leur taille de fichier.",
     "q5": "Sur quels appareils ça fonctionne ?",
     "a5": "Sur n'importe quel navigateur récent, que tu sois sur mobile, tablette ou ordinateur.",
     "q6": "Est-ce légal de télécharger une vidéo ?",
@@ -84,33 +88,41 @@
     "tagline": "Télécharge gratuitement des vidéos Twitter / X en quelques secondes.",
     "disclaimer": "Service non affilié à X Corp. / Twitter. Les marques et contenus appartiennent à leurs propriétaires respectifs.",
     "rights": "Tous droits réservés.",
-    "legal": "Légal"
+    "legal": "Légal",
+    "tools": "Téléchargeurs"
   },
   "pages": {
     "about": {
       "title": "À propos",
       "paragraphs": [
-        "Twitter Video Downloader est un outil en ligne gratuit qui te permet d'enregistrer des vidéos et des GIF de Twitter / X à partir du simple lien d'un tweet.",
-        "Notre objectif est simple : offrir le moyen le plus rapide et le plus propre de télécharger une vidéo Twitter dans la qualité de ton choix, sans inscription et sans logiciel à installer.",
-        "Nous ne sommes pas affiliés à X Corp. ni à Twitter. Nous n'hébergeons aucune vidéo sur nos serveurs — nous t'aidons seulement à récupérer des médias accessibles publiquement, pour un usage personnel."
+        "Ce site est un téléchargeur de vidéos en ligne gratuit qui te permet d'enregistrer des vidéos publiques de Twitter / X, TikTok, Instagram, Reddit et Facebook à partir du simple lien d'une publication.",
+        "Notre objectif est simple : le moyen le plus rapide et le plus propre de télécharger une vidéo des réseaux sociaux dans la qualité de ton choix — sur mobile comme sur ordinateur, sans inscription et sans logiciel.",
+        "Nous ne sommes ni affiliés, ni approuvés, ni sponsorisés par ces plateformes. Nous n'hébergeons aucune vidéo sur nos serveurs ; nous t'aidons seulement à récupérer des médias accessibles publiquement, pour un usage personnel.",
+        "Toutes les marques, logos et contenus appartiennent à leurs propriétaires respectifs."
       ]
     },
     "privacy": {
       "title": "Politique de confidentialité",
       "paragraphs": [
-        "Nous respectons ta vie privée. Aucun compte n'est nécessaire et nous ne demandons aucune information personnelle pour utiliser le téléchargeur.",
-        "Lorsque tu soumets un lien de tweet, il est traité uniquement pour récupérer les qualités de vidéo disponibles. Nous conservons des données d'usage anonymes et agrégées (comme le nombre de téléchargements et d'erreurs) pour faire fonctionner et améliorer le service.",
-        "Nous n'hébergeons ni ne conservons les vidéos téléchargées sur nos serveurs. Nous pouvons utiliser des cookies d'analyse et de publicité ; tu peux les contrôler depuis les réglages de ton navigateur.",
-        "Pour toute question concernant tes données, contacte-nous via la page Contact."
+        "Nous respectons ta vie privée. Aucun compte n'est nécessaire et nous ne demandons jamais d'informations personnelles pour utiliser le téléchargeur.",
+        "Les liens que tu soumets sont traités uniquement pour récupérer les formats vidéo disponibles. Nous ne conservons ni les vidéos téléchargées, ni les liens au-delà de compteurs anonymes et agrégés (comme le nombre total de téléchargements et d'erreurs) servant à faire fonctionner et améliorer le service.",
+        "Cookies & publicité : nous utilisons Google Analytics et Google AdSense via Google Consent Mode v2. Les cookies de mesure et de publicité ne sont déposés qu'après ton acceptation dans le bandeau de consentement ; tu peux modifier ton choix à tout moment dans les réglages de ton navigateur.",
+        "Services tiers : Google (Analytics, AdSense) et, de façon optionnelle, un service de suivi d'erreurs peuvent traiter des données techniques (comme ton adresse IP et ton navigateur) selon leurs propres politiques de confidentialité.",
+        "Conservation des données : nous ne conservons aucune donnée personnelle — uniquement des statistiques d'usage anonymes. Les fichiers téléchargés sont diffusés en flux et jamais archivés sur nos serveurs.",
+        "Tes droits : comme nous ne collectons pas de données personnelles, il y a peu à consulter ou effacer ; pour toute question relative à la confidentialité, contacte-nous via la page Contact."
       ]
     },
     "terms": {
       "title": "Conditions d'utilisation",
       "paragraphs": [
-        "En utilisant ce site, tu acceptes ces conditions. Le service est fourni « tel quel », sans garantie d'aucune sorte.",
-        "Tu peux utiliser le téléchargeur uniquement à des fins personnelles et non commerciales. Tu es responsable du respect du droit d'auteur et des droits des créateurs de contenu.",
-        "Le téléchargement de contenu privé, ou de contenu que tu n'es pas autorisé à utiliser, n'est pas permis. Nous ne sommes pas responsables de l'usage que tu fais des fichiers téléchargés.",
-        "Nous ne sommes pas affiliés à X Corp. ni à Twitter. Nous pouvons mettre à jour ces conditions à tout moment."
+        "En accédant à ce site ou en l'utilisant, tu acceptes les présentes Conditions d'utilisation. Si tu n'es pas d'accord, n'utilise pas le site.",
+        "Service : nous fournissons un outil gratuit permettant de télécharger des vidéos publiques des plateformes supportées en soumettant un lien. Le service est fourni « en l'état » et « selon disponibilité », sans garantie d'aucune sorte.",
+        "Usage acceptable : tu peux utiliser le téléchargeur uniquement à des fins personnelles et non commerciales. Tu t'engages à ne pas télécharger de contenu privé ou protégé, à ne pas violer le droit d'auteur, et à ne pas abuser du service par du scraping automatisé ou à grande échelle.",
+        "Propriété intellectuelle : tout contenu téléchargé appartient à ses créateurs et plateformes d'origine. Tu es seul responsable du respect de leurs droits et de l'usage que tu fais des fichiers. Notre marque, notre design et notre code source restent notre propriété.",
+        "Services tiers : le site s'appuie sur des tiers, dont Google Analytics et Google AdSense, régis par leurs propres conditions et politiques.",
+        "Avertissement : les plateformes évoluent souvent et peuvent rompre l'extraction à tout moment ; nous ne garantissons ni la disponibilité, ni l'exactitude, ni un fonctionnement ininterrompu.",
+        "Limitation de responsabilité : dans la mesure permise par la loi, nous déclinons toute responsabilité pour tout préjudice direct ou indirect résultant de ton utilisation du site ou des fichiers téléchargés.",
+        "Modifications : nous pouvons mettre à jour ces conditions à tout moment. La poursuite de l'utilisation du site après modification vaut acceptation. Pour toute question, contacte-nous via la page Contact."
       ]
     },
     "contact": {
@@ -166,5 +178,44 @@
     "title": "Page introuvable",
     "desc": "La page que tu cherches n'existe pas ou a été déplacée.",
     "home": "Retour à l'accueil"
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X",
+      "title": "Téléchargeur de vidéos Twitter / X — vidéos Twitter / X en MP4",
+      "heroTitle": "Télécharge une vidéo Twitter / X en un clic.",
+      "heroDesc": "Colle le lien d'une publication Twitter / X, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur Twitter / X te permet d'enregistrer n'importe quelle vidéo publique de Twitter / X en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "title": "Téléchargeur de vidéos TikTok — vidéos TikTok en MP4",
+      "heroTitle": "Télécharge une vidéo TikTok en un clic.",
+      "heroDesc": "Colle le lien d'une publication TikTok, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur TikTok te permet d'enregistrer n'importe quelle vidéo publique de TikTok en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    },
+    "instagram": {
+      "name": "Instagram",
+      "title": "Téléchargeur de vidéos Instagram — vidéos Instagram en MP4",
+      "heroTitle": "Télécharge une vidéo Instagram en un clic.",
+      "heroDesc": "Colle le lien d'une publication Instagram, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur Instagram te permet d'enregistrer n'importe quelle vidéo publique de Instagram en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    },
+    "reddit": {
+      "name": "Reddit",
+      "title": "Téléchargeur de vidéos Reddit — vidéos Reddit en MP4",
+      "heroTitle": "Télécharge une vidéo Reddit en un clic.",
+      "heroDesc": "Colle le lien d'une publication Reddit, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur Reddit te permet d'enregistrer n'importe quelle vidéo publique de Reddit en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    },
+    "facebook": {
+      "name": "Facebook",
+      "title": "Téléchargeur de vidéos Facebook — vidéos Facebook en MP4",
+      "heroTitle": "Télécharge une vidéo Facebook en un clic.",
+      "heroDesc": "Colle le lien d'une publication Facebook, choisis la qualité et récupère ta vidéo en MP4 en quelques secondes. Gratuit, sans inscription.",
+      "intro": "Notre téléchargeur Facebook te permet d'enregistrer n'importe quelle vidéo publique de Facebook en haute qualité, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    },
+    "gridTitle": "Choisis une plateforme"
   }
 }

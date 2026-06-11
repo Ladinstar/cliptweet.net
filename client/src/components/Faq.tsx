@@ -3,16 +3,17 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 
-export default function Faq() {
+export default function Faq({ platformName }: { platformName?: string }) {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const itemClass = theme === 'dark' ? 'border-slate-800/70 bg-slate-950/80' : 'border-slate-200 bg-white/90';
+  const platform = platformName || t('platform.defaultName');
 
   const items = [
     { q: t('faq.q1'), a: t('faq.a1') },
     { q: t('faq.q2'), a: t('faq.a2') },
     { q: t('faq.q3'), a: t('faq.a3') },
-    { q: t('faq.q4'), a: t('faq.a4') },
+    { q: t('faq.q4'), a: t('faq.a4', { platform }) },
     { q: t('faq.q5'), a: t('faq.a5') },
     { q: t('faq.q6'), a: t('faq.a6') },
   ];

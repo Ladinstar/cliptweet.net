@@ -62,9 +62,9 @@ export default function LanguageSwitcher() {
 
       {open && (
         <div
-          className={`absolute right-0 z-50 mt-2 w-56 rounded-2xl border ${panelClass} p-2 shadow-xl shadow-slate-950/20`}
+          className={`absolute right-0 z-50 mt-2 w-72 rounded-2xl border ${panelClass} p-2 shadow-xl shadow-slate-950/20`}
         >
-          <ul className="grid grid-cols-1 gap-0.5">
+          <ul className="grid grid-cols-2 gap-0.5">
             {LANGUAGES.map((lang) => {
               const active = lang.code === current.code;
               return (

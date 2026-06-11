@@ -39,12 +39,12 @@ function runYtDlp(url, options, ms) {
 }
 
 /**
- * Validates that the URL points to an allowed Twitter/X tweet and returns the tweet id.
+ * Validates that the URL points to a supported platform and returns { platform, normalizedUrl }.
  * Throws a 400 HttpError otherwise. Guards against SSRF (only whitelisted hosts).
  */
-export function parseTweetUrl(rawUrl) {
+export function parseSourceUrl(rawUrl) {
   if (!rawUrl || typeof rawUrl !== 'string') {
-    throw badRequest('Lien Twitter requis.');
+    throw badRequest('Lien vidéo requis.');
   }
 
   let parsed;
@@ -58,17 +58,21 @@ export function parseTweetUrl(rawUrl) {
     throw badRequest('Protocole non autorisé.');
   }
 
-  if (!config.download.allowedHosts.includes(parsed.hostname.toLowerCase())) {
-    throw badRequest('Seuls les liens Twitter/X sont autorisés.');
+  const host = parsed.hostname.toLowerCase();
+  const platform = config.download.platforms.find((p) => p.hosts.includes(host));
+  if (!platform) {
+    throw badRequest('Plateforme non supportée (Twitter/X, Reddit, Instagram, TikTok, Facebook).');
   }
 
-  const match = parsed.pathname.match(/\/status\/(\d+)/);
-  if (!match) {
-    throw badRequest('URL Twitter invalide (identifiant de tweet manquant).');
+  if (parsed.pathname.replace(/\/+$/, '').length < 2) {
+    throw badRequest('Lien invalide : aucun contenu identifié.');
   }
 
-  return { tweetId: match[1], normalizedUrl: parsed.toString() };
+  return { platform: platform.id, normalizedUrl: parsed.toString() };
 }
+
+// Backwards-compatible alias.
+export const parseTweetUrl = parseSourceUrl;
 
 const FORMAT_ID_RE = /^[A-Za-z0-9_+.-]+$/;
 
@@ -108,10 +112,11 @@ function buildYtDlpOptions(selector) {
  * with their approximate file sizes, so the client can let the user choose.
  */
 export async function listFormats(tweetUrl) {
-  const { tweetId, normalizedUrl } = parseTweetUrl(tweetUrl);
+  const { platform, normalizedUrl } = parseSourceUrl(tweetUrl);
   const { errors } = getCollections();
 
-  const cached = await cacheGet(tweetId);
+  const cacheKey = `formats:${normalizedUrl}`;
+  const cached = await cacheGet(cacheKey);
   if (cached) return cached;
 
   try {
@@ -144,13 +149,14 @@ export async function listFormats(tweetUrl) {
       .sort((a, b) => (b.height || 0) - (a.height || 0));
 
     const payload = {
-      title: result?.title || 'Twitter Video',
+      title: result?.title || 'Video',
       uploader: result?.uploader || result?.uploader_id || null,
       thumbnail: result?.thumbnail || null,
       durationSeconds: result?.duration || null,
+      platform,
       formats,
     };
-    await cacheSet(tweetId, payload);
+    await cacheSet(cacheKey, payload);
     return payload;
   } catch (error) {
     const message = error?.stderr || error?.message || 'Erreur inconnue';
@@ -222,7 +228,11 @@ export function assertAllowedMediaUrl(rawUrl) {
   if (parsed.protocol !== 'https:') {
     throw badRequest('Protocole média non autorisé.');
   }
-  if (!config.download.allowedMediaHosts.includes(parsed.hostname.toLowerCase())) {
+  const host = parsed.hostname.toLowerCase();
+  const allowed = config.download.allowedMediaHostSuffixes.some(
+    (suffix) => host === suffix || host.endsWith(`.${suffix}`),
+  );
+  if (!allowed) {
     throw badRequest('Hôte média non autorisé.');
   }
   return parsed.toString();

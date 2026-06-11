@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "Descarga vídeos de Twitter en segundos."
+    "subtitle": "Descarga vídeos de Twitter en segundos.",
+    "more": "Más"
   },
   "home": {
     "heroTag": "Gratis y sin registro",
-    "heroTitle": "Descarga tu vídeo de Twitter en un clic.",
-    "heroDesc": "Pega el enlace de un tweet, elige la calidad y obtén tu vídeo en MP4 en segundos. Gratis, sin registro y sin instalar nada.",
+    "heroTitle": "Descarga cualquier vídeo en un clic.",
+    "heroDesc": "Pega un enlace de Twitter/X, TikTok, Instagram, Reddit o Facebook, elige la calidad y obtén tu MP4 en segundos. Gratis, sin registro.",
     "resultTitle": "Tu vídeo",
     "resultDesc": "Cuando el enlace es válido, elige una resolución y la descarga empieza enseguida.",
-    "inputLabel": "Enlace del tweet",
+    "inputLabel": "Enlace del vídeo",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "Descargar ahora",
     "download": "Descargar",
@@ -41,10 +42,10 @@
     "clearHistory": "Borrar"
   },
   "steps": {
-    "title": "¿Cómo descargar un vídeo de Twitter / X?",
+    "title": "¿Cómo descargar un vídeo en 3 pasos?",
     "subtitle": "En 3 pasos, en ordenador y en móvil.",
     "step1Title": "Copia el enlace del tweet",
-    "step1Desc": "En Twitter / X, toca el icono de Compartir bajo el tweet y luego «Copiar enlace».",
+    "step1Desc": "En {{platform}}, toca el icono de Compartir bajo el tweet y luego «Copiar enlace».",
     "step2Title": "Pega el enlace",
     "step2Desc": "Pega el enlace en el campo de arriba y haz clic en «Ver calidades».",
     "step3Title": "Elige y descarga",
@@ -74,7 +75,7 @@
     "q3": "¿Puedo descargar vídeos privados?",
     "a3": "No. El contenido privado requiere iniciar sesión en la cuenta, por seguridad y privacidad.",
     "q4": "¿Qué calidades están disponibles?",
-    "a4": "Todas las resoluciones que Twitter / X ofrece para el vídeo, con su tamaño de archivo.",
+    "a4": "Todas las resoluciones que {{platform}} ofrece para el vídeo, con su tamaño de archivo.",
     "q5": "¿En qué dispositivos funciona?",
     "a5": "En cualquier navegador moderno, ya sea en móvil, tablet u ordenador.",
     "q6": "¿Es legal descargar un vídeo?",
@@ -84,7 +85,8 @@
     "tagline": "Descarga vídeos de Twitter / X gratis en segundos.",
     "disclaimer": "Servicio no afiliado a X Corp. / Twitter. Las marcas y los contenidos pertenecen a sus respectivos propietarios.",
     "rights": "Todos los derechos reservados.",
-    "legal": "Legal"
+    "legal": "Legal",
+    "tools": "Descargadores"
   },
   "admin": {
     "title": "Panel de administración",
@@ -148,5 +150,24 @@
       ],
       "email": "contact@example.com"
     }
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X"
+    },
+    "tiktok": {
+      "name": "TikTok"
+    },
+    "instagram": {
+      "name": "Instagram"
+    },
+    "reddit": {
+      "name": "Reddit"
+    },
+    "facebook": {
+      "name": "Facebook"
+    },
+    "gridTitle": "Elige una plataforma"
   }
 }

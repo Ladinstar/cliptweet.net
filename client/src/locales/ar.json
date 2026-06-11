@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "حمّل فيديوهات تويتر في ثوانٍ."
+    "subtitle": "حمّل فيديوهات تويتر في ثوانٍ.",
+    "more": "المزيد"
   },
   "home": {
     "heroTag": "مجاني وبدون تسجيل",
-    "heroTitle": "حمّل فيديو تويتر بنقرة واحدة.",
-    "heroDesc": "الصق رابط التغريدة، اختر الجودة واحصل على الفيديو بصيغة MP4 في ثوانٍ. مجاني، بدون تسجيل وبدون تثبيت أي برنامج.",
+    "heroTitle": "حمّل أي فيديو بنقرة واحدة.",
+    "heroDesc": "الصق رابطًا من Twitter/X أو TikTok أو Instagram أو Reddit أو Facebook، اختر الجودة واحصل على ملف MP4 في ثوانٍ. مجانًا، بدون تسجيل.",
     "resultTitle": "الفيديو الخاص بك",
     "resultDesc": "عندما يكون الرابط صالحًا، اختر الدقة ويبدأ التنزيل فورًا.",
-    "inputLabel": "رابط التغريدة",
+    "inputLabel": "رابط الفيديو",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "حمّل الآن",
     "download": "تحميل",
@@ -41,7 +42,7 @@
     "clearHistory": "مسح"
   },
   "steps": {
-    "title": "كيف تحمّل فيديو من تويتر / X؟",
+    "title": "كيفية تنزيل فيديو في 3 خطوات؟",
     "subtitle": "في 3 خطوات، على الحاسوب والهاتف.",
     "step1Title": "انسخ رابط التغريدة",
     "step1Desc": "في تويتر / X، اضغط على أيقونة المشاركة أسفل التغريدة ثم «نسخ الرابط».",
@@ -84,7 +85,8 @@
     "tagline": "حمّل فيديوهات تويتر / X مجانًا في ثوانٍ.",
     "disclaimer": "خدمة غير تابعة لـ X Corp. / تويتر. العلامات والمحتوى ملك لأصحابها.",
     "rights": "جميع الحقوق محفوظة.",
-    "legal": "قانوني"
+    "legal": "قانوني",
+    "tools": "أدوات التنزيل"
   },
   "consent": {
     "text": "نستخدم ملفات تعريف الارتباط للإحصاءات والإعلانات.",
@@ -112,5 +114,24 @@
     "loginRequired": "بيانات الدخول مطلوبة.",
     "loginError": "خطأ في الاتصال",
     "connecting": "جارٍ الاتصال..."
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X"
+    },
+    "tiktok": {
+      "name": "TikTok"
+    },
+    "instagram": {
+      "name": "Instagram"
+    },
+    "reddit": {
+      "name": "Reddit"
+    },
+    "facebook": {
+      "name": "Facebook"
+    },
+    "gridTitle": "اختر منصة"
   }
 }

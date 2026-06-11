@@ -32,6 +32,7 @@ export interface FormatsResponse {
   uploader: string | null;
   thumbnail: string | null;
   durationSeconds: number | null;
+  platform?: string;
   formats: VideoFormat[];
 }
 

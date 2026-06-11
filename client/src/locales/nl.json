@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "Download Twitter-video's in seconden."
+    "subtitle": "Download Twitter-video's in seconden.",
+    "more": "Meer"
   },
   "home": {
     "heroTag": "Gratis & zonder account",
-    "heroTitle": "Download je Twitter-video met één klik.",
-    "heroDesc": "Plak de link van een tweet, kies de kwaliteit en krijg je MP4-video in seconden. Gratis, zonder account en zonder installatie.",
+    "heroTitle": "Download elke video met één klik.",
+    "heroDesc": "Plak een link van Twitter/X, TikTok, Instagram, Reddit of Facebook, kies de kwaliteit en krijg je MP4 in seconden. Gratis, zonder account.",
     "resultTitle": "Je video",
     "resultDesc": "Als de link geldig is, kies een resolutie en de download start meteen.",
-    "inputLabel": "Tweet-link",
+    "inputLabel": "Videolink",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "Nu downloaden",
     "download": "Downloaden",
@@ -41,7 +42,7 @@
     "clearHistory": "Wissen"
   },
   "steps": {
-    "title": "Hoe download je een Twitter / X-video?",
+    "title": "Hoe download je een video in 3 stappen?",
     "subtitle": "In 3 stappen, op desktop en mobiel.",
     "step1Title": "Kopieer de tweet-link",
     "step1Desc": "Tik op X op het deel-icoon onder de tweet en daarna op 'Link kopiëren'.",
@@ -74,7 +75,7 @@
     "q3": "Kan ik privévideo's downloaden?",
     "a3": "Nee. Privé-inhoud vereist inloggen op het account, om veiligheids- en privacyredenen.",
     "q4": "Welke kwaliteiten zijn beschikbaar?",
-    "a4": "Alle resoluties die Twitter / X voor de video aanbiedt, met bestandsgrootte.",
+    "a4": "Alle resoluties die {{platform}} voor de video aanbiedt, met bestandsgrootte.",
     "q5": "Op welke apparaten werkt het?",
     "a5": "In elke moderne browser, op mobiel, tablet of desktop.",
     "q6": "Is downloaden legaal?",
@@ -84,7 +85,8 @@
     "tagline": "Download gratis Twitter / X-video's in seconden.",
     "disclaimer": "Niet gelieerd aan X Corp. / Twitter. Merken en inhoud behoren toe aan hun respectieve eigenaars.",
     "rights": "Alle rechten voorbehouden.",
-    "legal": "Juridisch"
+    "legal": "Juridisch",
+    "tools": "Downloaders"
   },
   "consent": {
     "text": "We gebruiken cookies voor statistieken en advertenties.",
@@ -112,5 +114,24 @@
     "loginRequired": "Inloggegevens vereist.",
     "loginError": "Inlogfout",
     "connecting": "Verbinden..."
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X"
+    },
+    "tiktok": {
+      "name": "TikTok"
+    },
+    "instagram": {
+      "name": "Instagram"
+    },
+    "reddit": {
+      "name": "Reddit"
+    },
+    "facebook": {
+      "name": "Facebook"
+    },
+    "gridTitle": "Kies een platform"
   }
 }

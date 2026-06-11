@@ -9,6 +9,8 @@ import { useAuth } from '@/context/AuthContext';
 import { useLocale, useHasLocalePrefix, localeHref } from '@/hooks/useLocale';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import MoreMenu from '@/components/MoreMenu';
+import MobileMenu from '@/components/MobileMenu';
 import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
 
@@ -45,11 +47,11 @@ export default function Shell({ children }: { children: ReactNode }) {
           } backdrop-blur-sm sticky top-0 z-50`}
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div className="flex gap-8 items-center">
-              <Link href={homeHref} className="font-bold text-xl text-slate-900 dark:text-white">
-                {t('header.title')}
-              </Link>
-              <div className="flex gap-6">
+            <Link href={homeHref} className="font-bold text-xl text-slate-900 dark:text-white">
+              {t('header.title')}
+            </Link>
+            <div className="flex items-center gap-3 sm:gap-6">
+              <div className="hidden items-center gap-6 sm:flex">
                 <Link href={homeHref} className={navClass(onHome)}>
                   {t('nav.home')}
                 </Link>
@@ -58,11 +60,13 @@ export default function Shell({ children }: { children: ReactNode }) {
                     {t('nav.admin')}
                   </Link>
                 )}
+                <MoreMenu />
               </div>
-            </div>
-            <div className="flex items-center gap-4">
               <LanguageSwitcher />
               <ThemeSwitcher />
+              <div className="sm:hidden">
+                <MobileMenu />
+              </div>
             </div>
           </div>
         </nav>

@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "Lade Twitter-Videos in Sekunden herunter."
+    "subtitle": "Lade Twitter-Videos in Sekunden herunter.",
+    "more": "Mehr"
   },
   "home": {
     "heroTag": "Kostenlos & ohne Anmeldung",
-    "heroTitle": "Lade dein Twitter-Video mit einem Klick herunter.",
-    "heroDesc": "Füge den Link eines Tweets ein, wähle die Qualität und erhalte dein MP4-Video in Sekunden. Kostenlos, ohne Anmeldung und ohne Installation.",
+    "heroTitle": "Lade jedes Video mit einem Klick herunter.",
+    "heroDesc": "Füge einen Link von Twitter/X, TikTok, Instagram, Reddit oder Facebook ein, wähle die Qualität und erhalte dein MP4 in Sekunden. Kostenlos, ohne Anmeldung.",
     "resultTitle": "Dein Video",
     "resultDesc": "Wenn der Link gültig ist, wähle eine Auflösung und der Download startet sofort.",
-    "inputLabel": "Tweet-Link",
+    "inputLabel": "Video-Link",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "Jetzt herunterladen",
     "download": "Herunterladen",
@@ -41,10 +42,10 @@
     "clearHistory": "Löschen"
   },
   "steps": {
-    "title": "Wie lädt man ein Twitter- / X-Video herunter?",
+    "title": "Wie lädt man ein Video in 3 Schritten herunter?",
     "subtitle": "In 3 Schritten, am Computer und am Handy.",
     "step1Title": "Kopiere den Tweet-Link",
-    "step1Desc": "Tippe bei Twitter / X auf das Teilen-Symbol unter dem Tweet und dann auf „Link kopieren“.",
+    "step1Desc": "Tippe bei {{platform}} auf das Teilen-Symbol unter dem Tweet und dann auf „Link kopieren“.",
     "step2Title": "Füge den Link ein",
     "step2Desc": "Füge den Link in das Feld oben ein und klicke auf „Qualitäten anzeigen“.",
     "step3Title": "Wählen und herunterladen",
@@ -74,7 +75,7 @@
     "q3": "Kann ich private Videos herunterladen?",
     "a3": "Nein. Private Inhalte erfordern eine Anmeldung am Konto – aus Sicherheits- und Datenschutzgründen.",
     "q4": "Welche Qualitäten sind verfügbar?",
-    "a4": "Alle Auflösungen, die Twitter / X für das Video bereitstellt, samt Dateigröße.",
+    "a4": "Alle Auflösungen, die {{platform}} für das Video bereitstellt, samt Dateigröße.",
     "q5": "Auf welchen Geräten funktioniert es?",
     "a5": "In jedem modernen Browser, ob auf Handy, Tablet oder Computer.",
     "q6": "Ist das Herunterladen legal?",
@@ -84,7 +85,8 @@
     "tagline": "Lade Twitter- / X-Videos kostenlos in Sekunden herunter.",
     "disclaimer": "Dienst nicht mit X Corp. / Twitter verbunden. Marken und Inhalte gehören ihren jeweiligen Eigentümern.",
     "rights": "Alle Rechte vorbehalten.",
-    "legal": "Rechtliches"
+    "legal": "Rechtliches",
+    "tools": "Downloader"
   },
   "admin": {
     "title": "Admin-Bereich",
@@ -148,5 +150,24 @@
       ],
       "email": "contact@example.com"
     }
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X"
+    },
+    "tiktok": {
+      "name": "TikTok"
+    },
+    "instagram": {
+      "name": "Instagram"
+    },
+    "reddit": {
+      "name": "Reddit"
+    },
+    "facebook": {
+      "name": "Facebook"
+    },
+    "gridTitle": "Wähle eine Plattform"
   }
 }

@@ -7,6 +7,12 @@ function toMap(rows) {
   }, {});
 }
 
+/** Non-sensitive counter for the public "social proof" badge. */
+export async function getPublicStats() {
+  const { downloads } = getCollections();
+  return { downloads: await downloads.estimatedDocumentCount() };
+}
+
 export async function getStats() {
   const { downloads, errors } = getCollections();
 

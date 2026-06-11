@@ -5,15 +5,16 @@
   },
   "header": {
     "title": "Twitter Video Downloader",
-    "subtitle": "Download Twitter videos in seconds."
+    "subtitle": "Download Twitter videos in seconds.",
+    "more": "More"
   },
   "home": {
     "heroTag": "Free & no sign-up",
-    "heroTitle": "Download your Twitter video in one click.",
-    "heroDesc": "Paste a tweet link, choose the quality and get your MP4 video in seconds. Free, no sign-up and nothing to install.",
+    "heroTitle": "Download any video in one click.",
+    "heroDesc": "Paste a link from Twitter/X, TikTok, Instagram, Reddit or Facebook, choose the quality and get your MP4 in seconds. Free, no sign-up.",
     "resultTitle": "Your video",
     "resultDesc": "When the link is valid, pick a resolution and the download starts right away.",
-    "inputLabel": "Tweet link",
+    "inputLabel": "Video link",
     "inputPlaceholder": "https://twitter.com/username/status/1234567890",
     "downloadButton": "Download now",
     "download": "Download",
@@ -38,13 +39,16 @@
     "downloadHint": "Click a quality to start the download. You can grab several.",
     "downloadStarted": "Download started. If nothing happens, use the button below.",
     "recentTitle": "Recent",
-    "clearHistory": "Clear"
+    "clearHistory": "Clear",
+    "supported": "Also works with Reddit, Instagram, TikTok & Facebook",
+    "socialProof_one": "{{count}} video downloaded",
+    "socialProof_other": "{{count}} videos downloaded"
   },
   "steps": {
-    "title": "How to download a Twitter / X video?",
+    "title": "How to download a video in 3 steps?",
     "subtitle": "In 3 steps, on desktop and mobile.",
     "step1Title": "Copy the tweet link",
-    "step1Desc": "On Twitter / X, tap the Share icon under the tweet, then 'Copy link'.",
+    "step1Desc": "On {{platform}}, tap the Share icon under the tweet, then 'Copy link'.",
     "step2Title": "Paste the link",
     "step2Desc": "Paste the link into the field above and click 'Show qualities'.",
     "step3Title": "Choose and download",
@@ -74,7 +78,7 @@
     "q3": "Can I download private videos?",
     "a3": "No. Private content requires logging into the account, for security and privacy reasons.",
     "q4": "Which qualities are available?",
-    "a4": "All resolutions Twitter / X provides for the video, shown with their file size.",
+    "a4": "All resolutions {{platform}} provides for the video, shown with their file size.",
     "q5": "Which devices does it work on?",
     "a5": "Any modern browser, whether you're on mobile, tablet or desktop.",
     "q6": "Is it legal to download a video?",
@@ -84,33 +88,41 @@
     "tagline": "Download Twitter / X videos for free in seconds.",
     "disclaimer": "Not affiliated with X Corp. / Twitter. Trademarks and content belong to their respective owners.",
     "rights": "All rights reserved.",
-    "legal": "Legal"
+    "legal": "Legal",
+    "tools": "Downloaders"
   },
   "pages": {
     "about": {
       "title": "About",
       "paragraphs": [
-        "Twitter Video Downloader is a free online tool that lets you save videos and GIFs from Twitter / X using only the link to a tweet.",
-        "Our goal is simple: offer the fastest, cleanest way to download a Twitter video in the quality you want, with no sign-up and no software to install.",
-        "We are not affiliated with X Corp. or Twitter. We do not host any videos on our servers — we only help you fetch publicly available media for personal use."
+        "This site is a free online video downloader that lets you save publicly available videos from Twitter / X, TikTok, Instagram, Reddit and Facebook using only the link to a post.",
+        "Our goal is simple: the fastest, cleanest way to download a social media video in the quality you want — on mobile or desktop, with no sign-up and no software to install.",
+        "We are not affiliated with, endorsed by, or sponsored by any of these platforms. We do not host any videos on our servers; we only help you fetch publicly available media for personal use.",
+        "All trademarks, logos and content belong to their respective owners."
       ]
     },
     "privacy": {
       "title": "Privacy Policy",
       "paragraphs": [
-        "We respect your privacy. We do not require an account and we do not ask for any personal information to use the downloader.",
-        "When you submit a tweet link, it is processed only to fetch the available video qualities. We store anonymous, aggregated usage data (such as the number of downloads and errors) to keep the service running and improve it.",
-        "We do not host or keep the downloaded videos on our servers. We may use analytics and advertising cookies; you can control these through your browser settings.",
-        "For any question about your data, contact us via the Contact page."
+        "We respect your privacy. You do not need an account, and we never ask for personal information to use the downloader.",
+        "Links you submit are processed only to fetch the available video formats. We do not store the videos you download, nor the links beyond anonymous, aggregated counters (such as total downloads and errors) used to operate and improve the service.",
+        "Cookies & advertising: we use Google Analytics and Google AdSense via Google Consent Mode v2. Analytics and advertising cookies are only set after you accept them in the consent banner; you can change your choice anytime in your browser settings.",
+        "Third-party services: Google (Analytics, AdSense) and, optionally, an error-monitoring service may process technical data (such as your IP address and user agent) under their own privacy policies.",
+        "Data retention: we keep no personal data — only anonymous usage statistics. Downloaded files are streamed and never archived on our servers.",
+        "Your rights: as we do not collect personal data, there is little to access or erase; for any privacy question, contact us via the Contact page."
       ]
     },
     "terms": {
       "title": "Terms of Service",
       "paragraphs": [
-        "By using this website you agree to these terms. The service is provided as-is, without warranty of any kind.",
-        "You may use the downloader for personal, non-commercial purposes only. You are responsible for respecting copyright and the rights of content creators.",
-        "Downloading private content, or content you are not allowed to use, is not permitted. We are not responsible for how you use the downloaded files.",
-        "We are not affiliated with X Corp. or Twitter. We may update these terms at any time."
+        "By accessing or using this website, you agree to these Terms of Service. If you do not agree, please do not use the site.",
+        "Service: we provide a free tool that lets you download publicly available videos from supported platforms by submitting a link. The service is provided \"as is\" and \"as available\", without warranty of any kind.",
+        "Acceptable use: you may use the downloader for personal, non-commercial purposes only. You agree not to download private or protected content, not to infringe copyright, and not to abuse the service through automated or large-scale scraping.",
+        "Intellectual property: all downloaded content belongs to its original creators and platforms. You are solely responsible for respecting their rights and for how you use the files. Our brand, design and source code remain our property.",
+        "Third-party services: the site relies on third parties including Google Analytics and Google AdSense, each governed by their own terms and policies.",
+        "Disclaimer: platforms change frequently and may break extraction at any time; we do not guarantee availability, accuracy or uninterrupted operation.",
+        "Limitation of liability: to the maximum extent permitted by law, we accept no liability for any direct or indirect loss arising from your use of the site or the downloaded files.",
+        "Changes: we may update these terms at any time. Continued use of the site after changes constitutes acceptance. For any question, reach us via the Contact page."
       ]
     },
     "contact": {
@@ -166,5 +178,44 @@
     "title": "Page not found",
     "desc": "The page you're looking for doesn't exist or has moved.",
     "home": "Back to home"
+  },
+  "platform": {
+    "defaultName": "Twitter / X",
+    "twitter": {
+      "name": "Twitter / X",
+      "title": "Twitter / X Video Downloader — download Twitter / X videos in MP4",
+      "heroTitle": "Download a Twitter / X video in one click.",
+      "heroDesc": "Paste a Twitter / X link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our Twitter / X downloader lets you save any public Twitter / X video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "title": "TikTok Video Downloader — download TikTok videos in MP4",
+      "heroTitle": "Download a TikTok video in one click.",
+      "heroDesc": "Paste a TikTok link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our TikTok downloader lets you save any public TikTok video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    },
+    "instagram": {
+      "name": "Instagram",
+      "title": "Instagram Video Downloader — download Instagram videos in MP4",
+      "heroTitle": "Download a Instagram video in one click.",
+      "heroDesc": "Paste a Instagram link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our Instagram downloader lets you save any public Instagram video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    },
+    "reddit": {
+      "name": "Reddit",
+      "title": "Reddit Video Downloader — download Reddit videos in MP4",
+      "heroTitle": "Download a Reddit video in one click.",
+      "heroDesc": "Paste a Reddit link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our Reddit downloader lets you save any public Reddit video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    },
+    "facebook": {
+      "name": "Facebook",
+      "title": "Facebook Video Downloader — download Facebook videos in MP4",
+      "heroTitle": "Download a Facebook video in one click.",
+      "heroDesc": "Paste a Facebook link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "intro": "Our Facebook downloader lets you save any public Facebook video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    },
+    "gridTitle": "Choose a platform"
   }
 }

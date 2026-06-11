@@ -3,13 +3,14 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 
-export default function Steps() {
+export default function Steps({ platformName }: { platformName?: string }) {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const cardClass = theme === 'dark' ? 'border-slate-800/70 bg-slate-950/80' : 'border-slate-200 bg-white/90';
+  const platform = platformName || t('platform.defaultName');
 
   const steps = [
-    { n: '1', title: t('steps.step1Title'), desc: t('steps.step1Desc'), icon: '🔗' },
+    { n: '1', title: t('steps.step1Title'), desc: t('steps.step1Desc', { platform }), icon: '🔗' },
     { n: '2', title: t('steps.step2Title'), desc: t('steps.step2Desc'), icon: '📋' },
     { n: '3', title: t('steps.step3Title'), desc: t('steps.step3Desc'), icon: '⬇️' },
   ];
