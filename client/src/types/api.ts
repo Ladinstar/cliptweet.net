@@ -52,6 +52,7 @@ export interface AdminStats {
   lastLinks: Array<{
     url: string;
     title: string;
+    platform?: string;
     format: string;
     quality: string;
     timestamp: string;
@@ -63,6 +64,7 @@ export interface AdminStats {
   }>;
   formatStats: Record<string, number>;
   qualityStats: Record<string, number>;
+  platformStats: Record<string, number>;
 }
 
 export interface ApiError {

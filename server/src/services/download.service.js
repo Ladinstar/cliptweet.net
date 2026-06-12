@@ -258,7 +258,7 @@ function pickDownloadUrl(result) {
 }
 
 export async function resolveDownload({ tweetUrl, format = 'mp4', quality = 'best', formatId = null }) {
-  const { normalizedUrl } = parseTweetUrl(tweetUrl);
+  const { platform, normalizedUrl } = parseTweetUrl(tweetUrl);
   const selector = selectFormat({ format, quality, formatId });
   const { downloads, errors } = getCollections();
 
@@ -275,6 +275,7 @@ export async function resolveDownload({ tweetUrl, format = 'mp4', quality = 'bes
     await downloads.insertOne({
       url: normalizedUrl,
       title,
+      platform,
       format,
       quality,
       formatId,
@@ -328,7 +329,7 @@ export function assertAllowedMediaUrl(rawUrl) {
 export async function downloadAudioToTemp(tweetUrl, audioFormat = 'mp3') {
   // mp3 = re-encoded (universal); m4a = remuxed/copied from Twitter's AAC (faster, no re-encode).
   const ext = audioFormat === 'm4a' ? 'm4a' : 'mp3';
-  const { normalizedUrl } = parseTweetUrl(tweetUrl);
+  const { platform, normalizedUrl } = parseTweetUrl(tweetUrl);
   const { downloads, errors } = getCollections();
   const dir = await mkdtemp(join(tmpdir(), 'tvd-'));
 
@@ -362,6 +363,7 @@ export async function downloadAudioToTemp(tweetUrl, audioFormat = 'mp3') {
     await downloads.insertOne({
       url: normalizedUrl,
       title,
+      platform,
       format: ext,
       quality: 'audio',
       timestamp: new Date().toISOString(),
@@ -402,7 +404,7 @@ function fastDownloadFlags() {
  * Reddit, etc. where no progressive muxed file exists. Caller removes `dir` after streaming.
  */
 export async function downloadMergedToTemp(tweetUrl, formatId) {
-  const { normalizedUrl } = parseSourceUrl(tweetUrl);
+  const { platform, normalizedUrl } = parseSourceUrl(tweetUrl);
   if (!FORMAT_ID_RE.test(formatId)) {
     throw badRequest('Identifiant de format invalide.');
   }
@@ -437,6 +439,7 @@ export async function downloadMergedToTemp(tweetUrl, formatId) {
     await downloads.insertOne({
       url: normalizedUrl,
       title,
+      platform,
       format: 'mp4',
       quality: `merge:${formatId}`,
       timestamp: new Date().toISOString(),
