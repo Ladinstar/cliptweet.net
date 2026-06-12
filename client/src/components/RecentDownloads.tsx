@@ -12,10 +12,12 @@ export default function RecentDownloads({ onSelect }: { onSelect: (url: string) 
     setItems(getHistory());
   }, []);
 
-  if (items.length === 0) return null;
+  // Always render a height-reserved wrapper (identical on server + first client
+  // paint) so loading the history after mount doesn't shift the page (CLS).
+  if (items.length === 0) return <div className="mt-6 min-h-[3.5rem]" aria-hidden="true" />;
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 min-h-[3.5rem]">
       <div className="mb-2 flex items-center justify-between">
         <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{t('home.recentTitle')}</p>
         <button

@@ -3,6 +3,10 @@
     "home": "Home",
     "admin": "Admin"
   },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Download Twitter / X Videos in MP4",
+    "siteDesc": "Download Twitter / X, TikTok, Instagram, Reddit and Facebook videos in MP4 for free, in high quality, from a simple link. Pick the resolution and grab the file in one click."
+  },
   "header": {
     "title": "Twitter Video Downloader",
     "subtitle": "Download Twitter videos in seconds.",
@@ -23,7 +27,7 @@
     "copySuccess": "Link copied!",
     "paste": "Paste",
     "clear": "Clear",
-    "enterLink": "Enter a tweet link above to see the available qualities.",
+    "enterLink": "Paste a link above to see the available qualities.",
     "downloadTitle": "Title:",
     "adLabel": "Advertisement",
     "formatLabel": "Format",
@@ -43,13 +47,16 @@
     "supported": "Also works with YouTube, Reddit, Instagram, TikTok & Facebook",
     "socialProof_one": "{{count}} video downloaded",
     "socialProof_other": "{{count}} videos downloaded",
-    "mergeHint": "HD — merged on our server, may take a little longer."
+    "mergeHint": "HD — merged on our server, may take a little longer.",
+    "mergeProcessing": "Merging HD video on our server…",
+    "audioProcessing": "Extracting and converting audio on our server…",
+    "elapsedSeconds": "Elapsed: {{seconds}}s"
   },
   "steps": {
     "title": "How to download a video in 3 steps?",
     "subtitle": "In 3 steps, on desktop and mobile.",
     "step1Title": "Copy the tweet link",
-    "step1Desc": "On {{platform}}, tap the Share icon under the tweet, then 'Copy link'.",
+    "step1Desc": "On {{platform}}, tap the Share icon on the post, then 'Copy link'.",
     "step2Title": "Paste the link",
     "step2Desc": "Paste the link into the field above and click 'Show qualities'.",
     "step3Title": "Choose and download",
@@ -83,7 +90,11 @@
     "q5": "Which devices does it work on?",
     "a5": "Any modern browser, whether you're on mobile, tablet or desktop.",
     "q6": "Is it legal to download a video?",
-    "a6": "For personal use it's generally accepted. Respect creators' rights and don't reuse their content without permission."
+    "a6": "For personal use it's generally accepted. Respect creators' rights and don't reuse their content without permission.",
+    "q7": "",
+    "a7": "",
+    "q8": "",
+    "a8": ""
   },
   "footer": {
     "tagline": "Download Twitter / X videos for free in seconds.",
@@ -133,6 +144,17 @@
         "Reach us by email and we'll get back to you as soon as possible."
       ],
       "email": "contact@example.com"
+    },
+    "dmca": {
+      "title": "DMCA & Content Removal",
+      "paragraphs": [
+        "We respect intellectual property rights and respond to valid takedown notices. Importantly, we do not host any video on our servers: the tool fetches publicly available media on demand from the original platform and passes it to your browser. We keep no copy of the content.",
+        "Because nothing is stored here, the most effective removal is at the source platform (Twitter/X, YouTube, TikTok, Instagram, Reddit, Facebook), which actually hosts the file.",
+        "If you are a rights holder and believe our tool facilitates infringement of your work, you can send us a notice including: (1) your contact details, (2) identification of the copyrighted work, (3) the exact link involved, (4) a statement that you have a good-faith belief the use is unauthorized, and (5) a statement, under penalty of perjury, that the information is accurate and that you are the owner or authorized to act on their behalf.",
+        "Send your notice to the email below with the subject \"DMCA Notice\". We aim to acknowledge valid requests within 48 hours.",
+        "Abuse reports: to report misuse of the service (spam, attempts to download private content, or any illegal use), use the same address with the subject \"Abuse Report\"."
+      ],
+      "email": "dmca@example.com"
     }
   },
   "admin": {
@@ -155,6 +177,9 @@
     "authError": "Invalid password.",
     "formatStats": "Format statistics",
     "qualityStats": "Quality statistics",
+    "platformStats": "Downloads by platform",
+    "successRate": "Success rate",
+    "noData": "No data yet.",
     "welcome": "Welcome, {{username}}",
     "authRequired": "Authentication required",
     "statsTitle": "Statistics",
@@ -167,7 +192,10 @@
     "passwordLabel": "Password",
     "loginRequired": "Credentials required.",
     "loginError": "Login error",
-    "connecting": "Signing in..."
+    "connecting": "Signing in...",
+    "forbiddenTitle": "403 — Access denied",
+    "forbiddenDesc": "This area is reserved for administrators. Please sign in to continue.",
+    "goToLogin": "Go to login"
   },
   "consent": {
     "text": "We use cookies for analytics and ads.",
@@ -199,8 +227,8 @@
     "instagram": {
       "name": "Instagram",
       "title": "Instagram Video Downloader — download Instagram videos in MP4",
-      "heroTitle": "Download a Instagram video in one click.",
-      "heroDesc": "Paste a Instagram link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
+      "heroTitle": "Download an Instagram video in one click.",
+      "heroDesc": "Paste an Instagram link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
       "intro": "Our Instagram downloader lets you save any public Instagram video in high quality, straight from your browser — on mobile or desktop, with no software and no sign-up."
     },
     "reddit": {
@@ -224,6 +252,88 @@
       "heroTitle": "Download a YouTube video in one click.",
       "heroDesc": "Paste a YouTube link, choose the quality and get your MP4 in seconds. Free, no sign-up.",
       "intro": "Our YouTube downloader lets you save public YouTube videos as MP4, straight from your browser — on mobile or desktop, with no software and no sign-up."
+    }
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — TikTok Video Downloader Without Watermark (HD MP4)",
+        "siteDesc": "Download TikTok videos without watermark in HD MP4, or grab the sound as MP3, from a simple link. Free, unlimited, no app and no sign-up — on iPhone, Android and PC."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Download TikTok videos without watermark."
+      },
+      "home": {
+        "heroTag": "No watermark · Free · No app",
+        "heroTitle": "Download TikTok videos without watermark.",
+        "heroDesc": "Paste a TikTok link and save the video in HD MP4 — without the username watermark — or extract the sound as MP3. Free, unlimited, nothing to install.",
+        "inputLabel": "TikTok link",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Paste a TikTok link above to see the available qualities.",
+        "supported": "Also works with Twitter/X, Instagram, Reddit & Facebook",
+        "intro1": "TokSaver saves any public TikTok video straight to your device, in the best quality available and without the moving username watermark stamped over the image.",
+        "intro2": "Everything happens in your browser: no app to install, no account to create, no download limits. Copy the link from the TikTok app, paste it above, pick MP4 or MP3 — done in seconds.",
+        "intro3": "Videos are fetched on demand from TikTok's servers and streamed directly to you. We never store your files or your history."
+      },
+      "steps": {
+        "title": "How to download a TikTok video in 3 steps?",
+        "step1Title": "Copy the TikTok link",
+        "step1Desc": "In the TikTok app, tap Share on the video, then 'Copy link'."
+      },
+      "faq": {
+        "q7": "Does it really remove the TikTok watermark?",
+        "a7": "Yes. We fetch the original file TikTok serves without the moving username watermark whenever the platform makes it available — which is the case for the vast majority of public videos.",
+        "q8": "Can I save just the sound of a TikTok as MP3?",
+        "a8": "Yes — paste the link, switch the format to MP3 and you get the audio track of the video, ready for your library or your own edits."
+      },
+      "footer": {
+        "tagline": "Download TikTok videos without watermark — free, fast and in HD.",
+        "disclaimer": "Not affiliated with TikTok or ByteDance Ltd. Trademarks and content belong to their respective owners."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "More free downloaders"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Twitter Video Downloader: Save X Videos & GIFs in MP4",
+        "siteDesc": "Download Twitter / X videos and GIFs in MP4 up to 1080p from a simple tweet link. Free, fast, no sign-up — works on iPhone, Android and PC."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Download Twitter / X videos in MP4."
+      },
+      "home": {
+        "heroTag": "Free · HD up to 1080p · No sign-up",
+        "heroTitle": "Download Twitter / X videos in MP4.",
+        "heroDesc": "Paste a tweet link and save the video or GIF in MP4, in every quality X provides — up to 1080p — or grab the audio as MP3. Free and unlimited.",
+        "inputLabel": "Tweet link",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Paste a tweet link above to see the available qualities.",
+        "supported": "Also works with TikTok, Instagram, Reddit & Facebook",
+        "intro1": "TweetSaver turns any public tweet that contains a video or a GIF into a clean MP4 file on your device — with the exact resolution and file size shown before you download.",
+        "intro2": "Everything happens in your browser: no app, no account, no limits. Copy the tweet link from X, paste it above, choose a quality — your download starts instantly.",
+        "intro3": "Videos are fetched on demand from X's servers and streamed straight to you. Nothing is stored on our side, not even your history."
+      },
+      "steps": {
+        "title": "How to download a Twitter / X video in 3 steps?"
+      },
+      "faq": {
+        "q7": "Can I download GIFs from Twitter / X?",
+        "a7": "Yes. X converts GIFs into short videos, and we save them for you as standard MP4 files that play anywhere, keeping the original loop quality.",
+        "q8": "Which resolutions can I get?",
+        "a8": "Every rendition X provides for the tweet — typically 360p, 720p and 1080p — each shown with its file size so you can choose before downloading."
+      },
+      "footer": {
+        "tagline": "Download Twitter / X videos and GIFs in MP4 — free, fast and in HD.",
+        "disclaimer": "Not affiliated with X Corp. / Twitter. Trademarks and content belong to their respective owners."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "More free downloaders"
+      }
     }
   }
 }

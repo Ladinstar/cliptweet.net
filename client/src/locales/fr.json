@@ -23,7 +23,7 @@
     "copySuccess": "Lien copié !",
     "paste": "Coller",
     "clear": "Effacer",
-    "enterLink": "Entre un lien de tweet ci-dessus pour voir les qualités disponibles.",
+    "enterLink": "Colle un lien ci-dessus pour voir les qualités disponibles.",
     "downloadTitle": "Titre :",
     "adLabel": "Publicité",
     "formatLabel": "Format",
@@ -43,13 +43,16 @@
     "supported": "Fonctionne aussi avec YouTube, Reddit, Instagram, TikTok et Facebook",
     "socialProof_one": "{{count}} vidéo téléchargée",
     "socialProof_other": "{{count}} vidéos téléchargées",
-    "mergeHint": "HD — fusionné sur notre serveur, peut prendre un peu plus de temps."
+    "mergeHint": "HD — fusionné sur notre serveur, peut prendre un peu plus de temps.",
+    "mergeProcessing": "Fusion de la vidéo HD sur notre serveur…",
+    "audioProcessing": "Extraction et conversion de l'audio sur notre serveur…",
+    "elapsedSeconds": "Temps écoulé : {{seconds}} s"
   },
   "steps": {
     "title": "Comment télécharger une vidéo en 3 étapes ?",
     "subtitle": "En 3 étapes, sur ordinateur comme sur mobile.",
     "step1Title": "Copie le lien du tweet",
-    "step1Desc": "Sur {{platform}}, appuie sur l'icône Partager sous le tweet, puis sur « Copier le lien ».",
+    "step1Desc": "Sur {{platform}}, appuie sur l'icône Partager sous la publication, puis sur « Copier le lien ».",
     "step2Title": "Colle le lien",
     "step2Desc": "Colle le lien dans le champ ci-dessus et clique sur « Voir les qualités ».",
     "step3Title": "Choisis et télécharge",
@@ -133,6 +136,17 @@
         "Écris-nous par e-mail et nous te répondrons dès que possible."
       ],
       "email": "contact@example.com"
+    },
+    "dmca": {
+      "title": "DMCA & retrait de contenu",
+      "paragraphs": [
+        "Nous respectons les droits de propriété intellectuelle et traitons les demandes de retrait valides. Point important : nous n'hébergeons aucune vidéo sur nos serveurs. L'outil récupère à la demande un média public depuis la plateforme d'origine et le transmet à ton navigateur. Nous ne conservons aucune copie du contenu.",
+        "Comme rien n'est stocké chez nous, le retrait le plus efficace se fait directement sur la plateforme source (Twitter/X, YouTube, TikTok, Instagram, Reddit, Facebook), qui héberge réellement le fichier.",
+        "Si tu es titulaire de droits et estimes que notre outil facilite une atteinte à ton œuvre, envoie-nous une notification comprenant : (1) tes coordonnées, (2) l'identification de l'œuvre protégée, (3) le lien exact concerné, (4) une déclaration de bonne foi quant au caractère non autorisé de l'usage, et (5) une déclaration, sous peine de parjure, attestant l'exactitude des informations et ta qualité de titulaire ou de mandataire.",
+        "Envoie ta notification à l'adresse ci-dessous avec l'objet « DMCA Notice ». Nous nous efforçons d'accuser réception des demandes valides sous 48 heures.",
+        "Signalement d'abus : pour signaler un usage abusif du service (spam, tentative de téléchargement de contenu privé ou tout usage illégal), utilise la même adresse avec l'objet « Abuse Report »."
+      ],
+      "email": "dmca@example.com"
     }
   },
   "admin": {
@@ -155,6 +169,9 @@
     "authError": "Mot de passe invalide.",
     "formatStats": "Statistiques par format",
     "qualityStats": "Statistiques par qualité",
+    "platformStats": "Téléchargements par plateforme",
+    "successRate": "Taux de réussite",
+    "noData": "Aucune donnée pour l'instant.",
     "welcome": "Bienvenue, {{username}}",
     "authRequired": "Authentification requise",
     "statsTitle": "Statistiques",
@@ -167,7 +184,10 @@
     "passwordLabel": "Mot de passe",
     "loginRequired": "Identifiants requis.",
     "loginError": "Erreur de connexion",
-    "connecting": "Connexion..."
+    "connecting": "Connexion...",
+    "forbiddenTitle": "403 — Accès refusé",
+    "forbiddenDesc": "Cette zone est réservée aux administrateurs. Connecte-toi pour continuer.",
+    "goToLogin": "Aller à la connexion"
   },
   "consent": {
     "text": "Nous utilisons des cookies pour les statistiques et la publicité.",
@@ -224,6 +244,92 @@
       "heroTitle": "Télécharge une vidéo YouTube en un clic.",
       "heroDesc": "Colle le lien d'une vidéo YouTube, choisis la qualité et récupère ton MP4 en quelques secondes. Gratuit, sans inscription.",
       "intro": "Notre téléchargeur YouTube te permet d'enregistrer des vidéos YouTube publiques en MP4, directement depuis ton navigateur — sur mobile comme sur ordinateur, sans logiciel ni inscription."
+    }
+  },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Télécharge des vidéos Twitter / X en MP4",
+    "siteDesc": "Télécharge gratuitement des vidéos Twitter / X, TikTok, Instagram, Reddit et Facebook en MP4, en haute qualité, à partir d'un simple lien. Choisis la résolution et récupère le fichier en un clic."
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — Télécharger une vidéo TikTok sans filigrane (MP4 HD)",
+        "siteDesc": "Télécharge des vidéos TikTok sans filigrane en MP4 HD, ou récupère le son en MP3, à partir d'un simple lien. Gratuit, illimité, sans application ni inscription — sur iPhone, Android et PC."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Télécharge des vidéos TikTok sans filigrane."
+      },
+      "home": {
+        "heroTag": "Sans filigrane · Gratuit · Sans application",
+        "heroTitle": "Télécharge des vidéos TikTok sans filigrane.",
+        "heroDesc": "Colle un lien TikTok et enregistre la vidéo en MP4 HD — sans le filigrane du pseudo — ou extrais le son en MP3. Gratuit, illimité, rien à installer.",
+        "inputLabel": "Lien TikTok",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Colle un lien TikTok ci-dessus pour voir les qualités disponibles.",
+        "supported": "Fonctionne aussi avec Twitter/X, Instagram, Reddit et Facebook",
+        "intro1": "TokSaver enregistre n'importe quelle vidéo TikTok publique directement sur ton appareil, dans la meilleure qualité disponible et sans le filigrane animé du pseudo incrusté sur l'image.",
+        "intro2": "Tout se passe dans ton navigateur : aucune application à installer, aucun compte à créer, aucune limite. Copie le lien depuis l'appli TikTok, colle-le ci-dessus, choisis MP4 ou MP3 — c'est fait en quelques secondes.",
+        "intro3": "Les vidéos sont récupérées à la demande depuis les serveurs de TikTok et te sont transmises en direct. Nous ne stockons jamais tes fichiers ni ton historique."
+      },
+      "steps": {
+        "title": "Comment télécharger une vidéo TikTok en 3 étapes ?",
+        "step1Title": "Copie le lien TikTok",
+        "step1Desc": "Dans l'appli TikTok, appuie sur Partager sous la vidéo, puis sur « Copier le lien »."
+      },
+      "faq": {
+        "q7": "Le filigrane TikTok est-il vraiment supprimé ?",
+        "a7": "Oui. Nous récupérons le fichier original que TikTok fournit sans le filigrane animé du pseudo dès que la plateforme le met à disposition — ce qui est le cas pour la grande majorité des vidéos publiques.",
+        "q8": "Puis-je enregistrer uniquement le son d'un TikTok en MP3 ?",
+        "a8": "Oui — colle le lien, passe le format en MP3 et tu obtiens la piste audio de la vidéo, prête pour ta bibliothèque ou tes propres montages."
+      },
+      "footer": {
+        "tagline": "Télécharge des vidéos TikTok sans filigrane — gratuit, rapide et en HD.",
+        "disclaimer": "Service non affilié à TikTok ni à ByteDance Ltd. Les marques et contenus appartiennent à leurs propriétaires respectifs."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "D'autres téléchargeurs gratuits"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Télécharger une vidéo Twitter / X en MP4 (vidéos et GIF)",
+        "siteDesc": "Télécharge des vidéos et GIF Twitter / X en MP4 jusqu'en 1080p à partir d'un simple lien de tweet. Gratuit, rapide, sans inscription — sur iPhone, Android et PC."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Télécharge des vidéos Twitter / X en MP4."
+      },
+      "home": {
+        "heroTag": "Gratuit · HD jusqu'en 1080p · Sans inscription",
+        "heroTitle": "Télécharge des vidéos Twitter / X en MP4.",
+        "heroDesc": "Colle le lien d'un tweet et enregistre la vidéo ou le GIF en MP4, dans toutes les qualités proposées par X — jusqu'en 1080p — ou récupère l'audio en MP3. Gratuit et illimité.",
+        "inputLabel": "Lien du tweet",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Colle le lien d'un tweet ci-dessus pour voir les qualités disponibles.",
+        "supported": "Fonctionne aussi avec TikTok, Instagram, Reddit et Facebook",
+        "intro1": "TweetSaver transforme n'importe quel tweet public contenant une vidéo ou un GIF en un fichier MP4 propre sur ton appareil — avec la résolution exacte et le poids du fichier affichés avant le téléchargement.",
+        "intro2": "Tout se passe dans ton navigateur : pas d'application, pas de compte, pas de limite. Copie le lien du tweet depuis X, colle-le ci-dessus, choisis une qualité — le téléchargement démarre instantanément.",
+        "intro3": "Les vidéos sont récupérées à la demande depuis les serveurs de X et te sont transmises en direct. Rien n'est stocké de notre côté, pas même ton historique."
+      },
+      "steps": {
+        "title": "Comment télécharger une vidéo Twitter / X en 3 étapes ?"
+      },
+      "faq": {
+        "q7": "Puis-je télécharger des GIF depuis Twitter / X ?",
+        "a7": "Oui. X convertit les GIF en courtes vidéos, et nous te les enregistrons en fichiers MP4 standards lisibles partout, en conservant la qualité d'origine de la boucle.",
+        "q8": "Quelles résolutions sont disponibles ?",
+        "a8": "Toutes les versions proposées par X pour le tweet — en général 360p, 720p et 1080p — chacune affichée avec son poids pour choisir avant de télécharger."
+      },
+      "footer": {
+        "tagline": "Télécharge des vidéos et GIF Twitter / X en MP4 — gratuit, rapide et en HD.",
+        "disclaimer": "Service non affilié à X Corp. / Twitter. Les marques et contenus appartiennent à leurs propriétaires respectifs."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "D'autres téléchargeurs gratuits"
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDownload, useFormats } from '@/hooks/useApi';
 import { buildMediaUrl, buildAudioUrl, buildVideoUrl, buildFilename } from '@/utils/api';
@@ -27,9 +27,10 @@ interface DownloaderProps {
   heroTitle: string;
   heroDesc: string;
   placeholder?: string;
+  enterLink?: string;
 }
 
-export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }: DownloaderProps) {
+export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder, enterLink }: DownloaderProps) {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const toast = useToast();
@@ -44,6 +45,22 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
 
   const analyzing = formats.isPending;
   const activeError = download.error || formats.error;
+
+  // Server-side merge (HD/4K) and audio transcode can take a while — show a live
+  // elapsed timer + reassurance instead of a bare spinner.
+  const mergingId =
+    downloadingId && formats.data?.formats.find((f) => f.id === downloadingId)?.needsMerge ? downloadingId : null;
+  const longOpActive = audioLoading || mergingId !== null;
+  const [elapsed, setElapsed] = useState(0);
+  useEffect(() => {
+    if (!longOpActive) {
+      setElapsed(0);
+      return;
+    }
+    const startedAt = Date.now();
+    const id = setInterval(() => setElapsed(Math.floor((Date.now() - startedAt) / 1000)), 1000);
+    return () => clearInterval(id);
+  }, [longOpActive]);
 
   const scrollToResult = () => {
     setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
@@ -81,7 +98,7 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
       downloadAudio(url, format);
     } else {
       formats.mutate(
-        { tweetUrl: url },
+        { sourceUrl: url },
         {
           onSuccess: (data) => {
             addHistory({ url, title: data.title, thumbnail: data.thumbnail });
@@ -125,7 +142,7 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
     }
     setDownloadingId(formatId);
     download.mutate(
-      { tweetUrl, format: 'mp4', formatId },
+      { sourceUrl: tweetUrl, format: 'mp4', formatId },
       {
         onSuccess: (res) => {
           const filename = buildFilename(formats.data?.uploader, formats.data?.title || res.title);
@@ -187,7 +204,7 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
       <div
         className={`mt-6 rounded-3xl p-6 ${theme === 'dark' ? 'bg-slate-900 text-slate-400' : 'bg-slate-50 text-slate-500'}`}
       >
-        {t('home.enterLink')}
+        {enterLink || t('home.enterLink')}
       </div>
     );
   };
@@ -224,6 +241,26 @@ export default function Downloader({ heroTag, heroTitle, heroDesc, placeholder }
       >
         <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">{t('home.resultTitle')}</h2>
         <p className={`mt-3 ${textClass}`}>{t('home.resultDesc')}</p>
+        {longOpActive && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-5 flex items-center gap-3 rounded-2xl bg-sky-500/10 p-4 text-sm text-sky-700 ring-1 ring-sky-500/20 dark:text-sky-200"
+          >
+            <svg className="h-5 w-5 flex-shrink-0 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+            <span>
+              <span className="font-semibold">{mergingId ? t('home.mergeProcessing') : t('home.audioProcessing')}</span>{' '}
+              <span className="opacity-80">{t('home.elapsedSeconds', { seconds: elapsed })}</span>
+            </span>
+          </div>
+        )}
         <div
           key={analyzing ? 'a' : formats.data ? 'f' : audioUrl ? 'au' : activeError ? 'e' : 'idle'}
           className="animate-fade-in-up"

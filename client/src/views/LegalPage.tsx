@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 
 interface LegalPageProps {
-  baseKey: 'pages.about' | 'pages.privacy' | 'pages.terms' | 'pages.contact';
+  baseKey: 'pages.about' | 'pages.privacy' | 'pages.terms' | 'pages.contact' | 'pages.dmca';
 }
 
 export default function LegalPage({ baseKey }: LegalPageProps) {

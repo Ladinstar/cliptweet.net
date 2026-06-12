@@ -18,6 +18,16 @@ const formatDuration = (seconds: number | null): string => {
   return `${m}:${s.toString().padStart(2, '0')}`;
 };
 
+const qualityTag = (height: number | null): { label: string; className: string } | null => {
+  if (!height) return null;
+  if (height >= 2160) return { label: '4K', className: 'bg-purple-500/15 text-purple-600 dark:text-purple-300' };
+  if (height >= 1440) return { label: 'QHD', className: 'bg-fuchsia-500/15 text-fuchsia-600 dark:text-fuchsia-300' };
+  if (height >= 1080) return { label: 'FHD', className: 'bg-sky-500/15 text-sky-600 dark:text-sky-300' };
+  if (height >= 720) return { label: 'HD', className: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300' };
+  if (height >= 480) return { label: 'SD', className: 'bg-orange-500/15 text-orange-600 dark:text-orange-300' };
+  return { label: 'LD', className: 'bg-slate-500/15 text-slate-500 dark:text-slate-400' };
+};
+
 export default function QualitySelector({ data, onDownload, downloadingId }: QualitySelectorProps) {
   const { t } = useTranslation();
   const { theme } = useTheme();
@@ -64,6 +74,7 @@ export default function QualitySelector({ data, onDownload, downloadingId }: Qua
           <div className="space-y-2.5">
             {data.formats.map((f) => {
               const loading = downloadingId === f.id;
+              const tag = qualityTag(f.height);
               return (
                 <button
                   key={f.id}
@@ -82,12 +93,19 @@ export default function QualitySelector({ data, onDownload, downloadingId }: Qua
                     <span className="rounded-md bg-slate-200 px-2 py-0.5 text-[10px] font-semibold uppercase text-slate-600 dark:bg-slate-700 dark:text-slate-300">
                       {f.ext}
                     </span>
+                    {tag && (
+                      <span className={`rounded-md px-2 py-0.5 text-[10px] font-bold uppercase ${tag.className}`}>
+                        {tag.label}
+                      </span>
+                    )}
                     {f.needsMerge && (
                       <span
                         title={t('home.mergeHint')}
-                        className="rounded-md bg-amber-400/20 px-2 py-0.5 text-[10px] font-semibold uppercase text-amber-600 dark:text-amber-300"
+                        role="img"
+                        aria-label={t('home.mergeHint')}
+                        className="rounded-md bg-amber-400/20 px-2 py-0.5 text-[10px] font-semibold text-amber-600 dark:text-amber-300"
                       >
-                        HD
+                        ⏳
                       </span>
                     )}
                   </span>

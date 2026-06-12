@@ -23,7 +23,7 @@
     "copySuccess": "Link copiato!",
     "paste": "Incolla",
     "clear": "Cancella",
-    "enterLink": "Inserisci un link di tweet qui sopra per vedere le qualità disponibili.",
+    "enterLink": "Incolla un link qui sopra per vedere le qualità disponibili.",
     "downloadTitle": "Titolo:",
     "adLabel": "Pubblicità",
     "formatLabel": "Formato",
@@ -46,7 +46,7 @@
     "title": "Come scaricare un video in 3 passaggi?",
     "subtitle": "In 3 passaggi, su computer e su smartphone.",
     "step1Title": "Copia il link del tweet",
-    "step1Desc": "Su {{platform}}, tocca l'icona Condividi sotto il tweet, poi «Copia link».",
+    "step1Desc": "Su {{platform}}, tocca l'icona Condividi sul post, poi «Copia link».",
     "step2Title": "Incolla il link",
     "step2Desc": "Incolla il link nel campo qui sopra e clicca su «Mostra le qualità».",
     "step3Title": "Scegli e scarica",
@@ -172,6 +172,92 @@
     "gridTitle": "Scegli una piattaforma",
     "youtube": {
       "name": "YouTube"
+    }
+  },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Scarica video di Twitter / X in MP4",
+    "siteDesc": "Scarica gratis video di Twitter / X, TikTok, Instagram, Reddit e Facebook in MP4 e in alta qualità da un semplice link. Scegli la risoluzione e ottieni il file in un clic."
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — Scaricare video TikTok senza filigrana (MP4 HD)",
+        "siteDesc": "Scarica video TikTok senza filigrana in MP4 HD, o estrai l'audio in MP3, da un semplice link. Gratis, illimitato, senza app e senza registrazione — su iPhone, Android e PC."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Scarica video TikTok senza filigrana."
+      },
+      "home": {
+        "heroTag": "Senza filigrana · Gratis · Senza app",
+        "heroTitle": "Scarica video TikTok senza filigrana.",
+        "heroDesc": "Incolla un link TikTok e salva il video in MP4 HD — senza la filigrana con il nome utente — oppure estrai l'audio in MP3. Gratis, illimitato, niente da installare.",
+        "inputLabel": "Link TikTok",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Incolla un link TikTok qui sopra per vedere le qualità disponibili.",
+        "supported": "Funziona anche con Twitter/X, Instagram, Reddit e Facebook",
+        "intro1": "TokSaver salva qualsiasi video TikTok pubblico direttamente sul tuo dispositivo, nella migliore qualità disponibile e senza la filigrana animata del nome utente impressa sull'immagine.",
+        "intro2": "Tutto avviene nel tuo browser: nessuna app da installare, nessun account da creare, nessun limite di download. Copia il link dall'app TikTok, incollalo qui sopra, scegli MP4 o MP3 — fatto in pochi secondi.",
+        "intro3": "I video vengono recuperati su richiesta dai server di TikTok e trasmessi direttamente a te. Non conserviamo mai i tuoi file né la tua cronologia."
+      },
+      "steps": {
+        "title": "Come scaricare un video TikTok in 3 passaggi?",
+        "step1Title": "Copia il link TikTok",
+        "step1Desc": "Nell'app TikTok, tocca Condividi sul video, poi «Copia link»."
+      },
+      "faq": {
+        "q7": "La filigrana TikTok viene davvero rimossa?",
+        "a7": "Sì. Recuperiamo il file originale che TikTok fornisce senza la filigrana animata del nome utente ogni volta che la piattaforma lo rende disponibile — il che vale per la grande maggioranza dei video pubblici.",
+        "q8": "Posso salvare solo l'audio di un TikTok in MP3?",
+        "a8": "Sì — incolla il link, imposta il formato su MP3 e ottieni la traccia audio del video, pronta per la tua libreria o i tuoi montaggi."
+      },
+      "footer": {
+        "tagline": "Scarica video TikTok senza filigrana — gratis, veloce e in HD.",
+        "disclaimer": "Servizio non affiliato a TikTok né a ByteDance Ltd. Marchi e contenuti appartengono ai rispettivi proprietari."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "Altri downloader gratuiti"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Scaricare video Twitter / X in MP4 (video e GIF)",
+        "siteDesc": "Scarica video e GIF di Twitter / X in MP4 fino a 1080p dal semplice link di un tweet. Gratis, veloce, senza registrazione — su iPhone, Android e PC."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Scarica video di Twitter / X in MP4."
+      },
+      "home": {
+        "heroTag": "Gratis · HD fino a 1080p · Senza registrazione",
+        "heroTitle": "Scarica video di Twitter / X in MP4.",
+        "heroDesc": "Incolla il link di un tweet e salva il video o la GIF in MP4, in tutte le qualità offerte da X — fino a 1080p — oppure estrai l'audio in MP3. Gratis e illimitato.",
+        "inputLabel": "Link del tweet",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Incolla il link di un tweet qui sopra per vedere le qualità disponibili.",
+        "supported": "Funziona anche con TikTok, Instagram, Reddit e Facebook",
+        "intro1": "TweetSaver trasforma qualsiasi tweet pubblico che contiene un video o una GIF in un file MP4 pulito sul tuo dispositivo — con risoluzione esatta e peso del file mostrati prima del download.",
+        "intro2": "Tutto avviene nel tuo browser: niente app, niente account, nessun limite. Copia il link del tweet da X, incollalo qui sopra, scegli una qualità — il download parte all'istante.",
+        "intro3": "I video vengono recuperati su richiesta dai server di X e trasmessi direttamente a te. Da noi non resta nulla, nemmeno la tua cronologia."
+      },
+      "steps": {
+        "title": "Come scaricare un video Twitter / X in 3 passaggi?"
+      },
+      "faq": {
+        "q7": "Posso scaricare le GIF da Twitter / X?",
+        "a7": "Sì. X converte le GIF in brevi video e noi te le salviamo come normali file MP4 riproducibili ovunque, mantenendo la qualità originale del loop.",
+        "q8": "Quali risoluzioni posso ottenere?",
+        "a8": "Tutte le versioni che X offre per il tweet — di solito 360p, 720p e 1080p — ognuna con il proprio peso, così scegli prima di scaricare."
+      },
+      "footer": {
+        "tagline": "Scarica video e GIF di Twitter / X in MP4 — gratis, veloce e in HD.",
+        "disclaimer": "Servizio non affiliato a X Corp. / Twitter. Marchi e contenuti appartengono ai rispettivi proprietari."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "Altri downloader gratuiti"
+      }
     }
   }
 }

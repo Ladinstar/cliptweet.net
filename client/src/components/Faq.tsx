@@ -3,7 +3,13 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 
-export default function Faq({ platformName }: { platformName?: string }) {
+interface FaqProps {
+  platformName?: string;
+  /** Brand-specific extra questions (focused home page only). */
+  extra?: Array<{ q: string; a: string }>;
+}
+
+export default function Faq({ platformName, extra = [] }: FaqProps) {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const itemClass = theme === 'dark' ? 'border-slate-800/70 bg-slate-950/80' : 'border-slate-200 bg-white/90';
@@ -16,7 +22,8 @@ export default function Faq({ platformName }: { platformName?: string }) {
     { q: t('faq.q4'), a: t('faq.a4', { platform }) },
     { q: t('faq.q5'), a: t('faq.a5') },
     { q: t('faq.q6'), a: t('faq.a6') },
-  ];
+    ...extra,
+  ].filter((item) => item.q && item.a);
 
   return (
     <section>

@@ -23,7 +23,7 @@
     "copySuccess": "Link gekopieerd!",
     "paste": "Plakken",
     "clear": "Wissen",
-    "enterLink": "Voer hierboven een tweet-link in om de beschikbare kwaliteiten te zien.",
+    "enterLink": "Plak hierboven een link om de beschikbare kwaliteiten te zien.",
     "downloadTitle": "Titel:",
     "adLabel": "Advertentie",
     "formatLabel": "Formaat",
@@ -46,7 +46,7 @@
     "title": "Hoe download je een video in 3 stappen?",
     "subtitle": "In 3 stappen, op desktop en mobiel.",
     "step1Title": "Kopieer de tweet-link",
-    "step1Desc": "Tik op X op het deel-icoon onder de tweet en daarna op 'Link kopiëren'.",
+    "step1Desc": "Tik op {{platform}} op het deel-icoon bij het bericht en daarna op 'Link kopiëren'.",
     "step2Title": "Plak de link",
     "step2Desc": "Plak de link in het veld hierboven en klik op 'Kwaliteiten tonen'.",
     "step3Title": "Kies en download",
@@ -136,6 +136,92 @@
     "gridTitle": "Kies een platform",
     "youtube": {
       "name": "YouTube"
+    }
+  },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Download Twitter / X video's in MP4",
+    "siteDesc": "Download gratis video's van Twitter / X, TikTok, Instagram, Reddit en Facebook in MP4 en hoge kwaliteit met alleen een link. Kies de resolutie en pak het bestand met één klik."
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — TikTok video's downloaden zonder watermerk (HD MP4)",
+        "siteDesc": "Download TikTok-video's zonder watermerk in HD MP4, of sla het geluid op als MP3, met alleen een link. Gratis, onbeperkt, zonder app en zonder account — op iPhone, Android en pc."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Download TikTok-video's zonder watermerk."
+      },
+      "home": {
+        "heroTag": "Zonder watermerk · Gratis · Geen app",
+        "heroTitle": "Download TikTok-video's zonder watermerk.",
+        "heroDesc": "Plak een TikTok-link en sla de video op in HD MP4 — zonder het watermerk met de gebruikersnaam — of haal het geluid eruit als MP3. Gratis, onbeperkt, niets te installeren.",
+        "inputLabel": "TikTok-link",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Plak hierboven een TikTok-link om de beschikbare kwaliteiten te zien.",
+        "supported": "Werkt ook met Twitter/X, Instagram, Reddit & Facebook",
+        "intro1": "TokSaver bewaart elke openbare TikTok-video rechtstreeks op je apparaat, in de beste beschikbare kwaliteit en zonder het bewegende watermerk met de gebruikersnaam in beeld.",
+        "intro2": "Alles gebeurt in je browser: geen app installeren, geen account aanmaken, geen downloadlimieten. Kopieer de link in de TikTok-app, plak hem hierboven, kies MP4 of MP3 — klaar in seconden.",
+        "intro3": "Video's worden op verzoek opgehaald van de servers van TikTok en rechtstreeks naar jou gestreamd. We bewaren nooit je bestanden of je geschiedenis."
+      },
+      "steps": {
+        "title": "Hoe download je een TikTok-video in 3 stappen?",
+        "step1Title": "Kopieer de TikTok-link",
+        "step1Desc": "Tik in de TikTok-app op Delen bij de video en daarna op 'Link kopiëren'."
+      },
+      "faq": {
+        "q7": "Wordt het TikTok-watermerk echt verwijderd?",
+        "a7": "Ja. We halen het originele bestand op dat TikTok zonder het bewegende watermerk aanbiedt, telkens wanneer het platform dat beschikbaar maakt — en dat is bij de overgrote meerderheid van openbare video's het geval.",
+        "q8": "Kan ik alleen het geluid van een TikTok opslaan als MP3?",
+        "a8": "Ja — plak de link, zet het formaat op MP3 en je krijgt de audiotrack van de video, klaar voor je bibliotheek of je eigen edits."
+      },
+      "footer": {
+        "tagline": "Download TikTok-video's zonder watermerk — gratis, snel en in HD.",
+        "disclaimer": "Niet gelieerd aan TikTok of ByteDance Ltd. Merken en inhoud behoren toe aan hun respectieve eigenaars."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "Meer gratis downloaders"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Twitter video downloader: X-video's & gifs opslaan in MP4",
+        "siteDesc": "Download Twitter / X video's en gifs in MP4 tot 1080p met alleen de link van een tweet. Gratis, snel, zonder account — op iPhone, Android en pc."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Download Twitter / X video's in MP4."
+      },
+      "home": {
+        "heroTag": "Gratis · HD tot 1080p · Geen account",
+        "heroTitle": "Download Twitter / X video's in MP4.",
+        "heroDesc": "Plak de link van een tweet en sla de video of gif op in MP4, in elke kwaliteit die X aanbiedt — tot 1080p — of haal de audio eruit als MP3. Gratis en onbeperkt.",
+        "inputLabel": "Tweet-link",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Plak hierboven de link van een tweet om de beschikbare kwaliteiten te zien.",
+        "supported": "Werkt ook met TikTok, Instagram, Reddit & Facebook",
+        "intro1": "TweetSaver maakt van elke openbare tweet met een video of gif een schoon MP4-bestand op je apparaat — met de exacte resolutie en bestandsgrootte in beeld voordat je downloadt.",
+        "intro2": "Alles gebeurt in je browser: geen app, geen account, geen limieten. Kopieer de tweet-link in X, plak hem hierboven, kies een kwaliteit — de download start meteen.",
+        "intro3": "Video's worden op verzoek opgehaald van de servers van X en rechtstreeks naar jou gestreamd. Bij ons wordt niets bewaard, zelfs je geschiedenis niet."
+      },
+      "steps": {
+        "title": "Hoe download je een Twitter / X video in 3 stappen?"
+      },
+      "faq": {
+        "q7": "Kan ik gifs downloaden van Twitter / X?",
+        "a7": "Ja. X zet gifs om in korte video's en wij slaan ze voor je op als gewone MP4-bestanden die overal afspelen, met de originele kwaliteit van de loop.",
+        "q8": "Welke resoluties kan ik krijgen?",
+        "a8": "Elke versie die X voor de tweet aanbiedt — meestal 360p, 720p en 1080p — elk met de bestandsgrootte erbij, zodat je kiest vóór het downloaden."
+      },
+      "footer": {
+        "tagline": "Download Twitter / X video's en gifs in MP4 — gratis, snel en in HD.",
+        "disclaimer": "Niet gelieerd aan X Corp. / Twitter. Merken en inhoud behoren toe aan hun respectieve eigenaars."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "Meer gratis downloaders"
+      }
     }
   }
 }

@@ -1,7 +1,9 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: 'class',
+  // The theme is toggled via <html data-theme="dark"> (see ThemeProvider), so
+  // wire Tailwind's `dark:` variant to that attribute (and keep `.dark` working).
+  darkMode: ['class', '[data-theme="dark"]'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {

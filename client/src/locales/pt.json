@@ -23,7 +23,7 @@
     "copySuccess": "Link copiado!",
     "paste": "Colar",
     "clear": "Limpar",
-    "enterLink": "Insira um link de tweet acima para ver as qualidades disponíveis.",
+    "enterLink": "Cole um link acima para ver as qualidades disponíveis.",
     "downloadTitle": "Título:",
     "adLabel": "Publicidade",
     "formatLabel": "Formato",
@@ -46,7 +46,7 @@
     "title": "Como baixar um vídeo em 3 passos?",
     "subtitle": "Em 3 passos, no computador e no celular.",
     "step1Title": "Copie o link do tweet",
-    "step1Desc": "No {{platform}}, toque no ícone Compartilhar abaixo do tweet e depois em «Copiar link».",
+    "step1Desc": "No {{platform}}, toque no ícone Compartilhar na publicação e depois em «Copiar link».",
     "step2Title": "Cole o link",
     "step2Desc": "Cole o link no campo acima e clique em «Ver qualidades».",
     "step3Title": "Escolha e baixe",
@@ -172,6 +172,92 @@
     "gridTitle": "Escolhe uma plataforma",
     "youtube": {
       "name": "YouTube"
+    }
+  },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Baixe vídeos do Twitter / X em MP4",
+    "siteDesc": "Baixe grátis vídeos do Twitter / X, TikTok, Instagram, Reddit e Facebook em MP4 e alta qualidade a partir de um simples link. Escolha a resolução e pegue o arquivo em um clique."
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — Baixar vídeo do TikTok sem marca d'água (MP4 HD)",
+        "siteDesc": "Baixe vídeos do TikTok sem marca d'água em MP4 HD, ou extraia o som em MP3, a partir de um simples link. Grátis, ilimitado, sem app e sem cadastro — no iPhone, Android e PC."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Baixe vídeos do TikTok sem marca d'água."
+      },
+      "home": {
+        "heroTag": "Sem marca d'água · Grátis · Sem app",
+        "heroTitle": "Baixe vídeos do TikTok sem marca d'água.",
+        "heroDesc": "Cole um link do TikTok e salve o vídeo em MP4 HD — sem a marca d'água do usuário — ou extraia o som em MP3. Grátis, ilimitado, nada para instalar.",
+        "inputLabel": "Link do TikTok",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Cole um link do TikTok acima para ver as qualidades disponíveis.",
+        "supported": "Também funciona com Twitter/X, Instagram, Reddit e Facebook",
+        "intro1": "O TokSaver salva qualquer vídeo público do TikTok direto no seu aparelho, na melhor qualidade disponível e sem a marca d'água animada do nome de usuário sobre a imagem.",
+        "intro2": "Tudo acontece no seu navegador: nenhum app para instalar, nenhuma conta para criar, nenhum limite de download. Copie o link no app do TikTok, cole acima, escolha MP4 ou MP3 — pronto em segundos.",
+        "intro3": "Os vídeos são buscados sob demanda nos servidores do TikTok e transmitidos diretamente para você. Nunca guardamos seus arquivos nem seu histórico."
+      },
+      "steps": {
+        "title": "Como baixar um vídeo do TikTok em 3 passos?",
+        "step1Title": "Copie o link do TikTok",
+        "step1Desc": "No app do TikTok, toque em Compartilhar no vídeo e depois em «Copiar link»."
+      },
+      "faq": {
+        "q7": "A marca d'água do TikTok é realmente removida?",
+        "a7": "Sim. Buscamos o arquivo original que o TikTok fornece sem a marca d'água animada do usuário sempre que a plataforma o disponibiliza — o que acontece na grande maioria dos vídeos públicos.",
+        "q8": "Posso salvar só o som de um TikTok em MP3?",
+        "a8": "Sim — cole o link, mude o formato para MP3 e você recebe a faixa de áudio do vídeo, pronta para a sua biblioteca ou para as suas edições."
+      },
+      "footer": {
+        "tagline": "Baixe vídeos do TikTok sem marca d'água — grátis, rápido e em HD.",
+        "disclaimer": "Serviço não afiliado ao TikTok nem à ByteDance Ltd. Marcas e conteúdos pertencem aos seus respectivos proprietários."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "Mais baixadores grátis"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Baixar vídeo do Twitter / X em MP4 (vídeos e GIFs)",
+        "siteDesc": "Baixe vídeos e GIFs do Twitter / X em MP4 até 1080p a partir do link de um tweet. Grátis, rápido, sem cadastro — no iPhone, Android e PC."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Baixe vídeos do Twitter / X em MP4."
+      },
+      "home": {
+        "heroTag": "Grátis · HD até 1080p · Sem cadastro",
+        "heroTitle": "Baixe vídeos do Twitter / X em MP4.",
+        "heroDesc": "Cole o link de um tweet e salve o vídeo ou GIF em MP4, em todas as qualidades que o X oferece — até 1080p — ou extraia o áudio em MP3. Grátis e ilimitado.",
+        "inputLabel": "Link do tweet",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Cole o link de um tweet acima para ver as qualidades disponíveis.",
+        "supported": "Também funciona com TikTok, Instagram, Reddit e Facebook",
+        "intro1": "O TweetSaver transforma qualquer tweet público com vídeo ou GIF em um arquivo MP4 limpo no seu aparelho — com a resolução exata e o tamanho do arquivo exibidos antes de baixar.",
+        "intro2": "Tudo acontece no seu navegador: sem app, sem conta, sem limites. Copie o link do tweet no X, cole acima, escolha uma qualidade — o download começa na hora.",
+        "intro3": "Os vídeos são buscados sob demanda nos servidores do X e transmitidos diretamente para você. Nada fica guardado do nosso lado, nem mesmo o seu histórico."
+      },
+      "steps": {
+        "title": "Como baixar um vídeo do Twitter / X em 3 passos?"
+      },
+      "faq": {
+        "q7": "Posso baixar GIFs do Twitter / X?",
+        "a7": "Sim. O X converte GIFs em vídeos curtos, e nós os salvamos para você como arquivos MP4 padrão que tocam em qualquer lugar, mantendo a qualidade original do loop.",
+        "q8": "Quais resoluções estão disponíveis?",
+        "a8": "Todas as versões que o X oferece para o tweet — geralmente 360p, 720p e 1080p — cada uma com o tamanho do arquivo para você escolher antes de baixar."
+      },
+      "footer": {
+        "tagline": "Baixe vídeos e GIFs do Twitter / X em MP4 — grátis, rápido e em HD.",
+        "disclaimer": "Serviço não afiliado à X Corp. / Twitter. Marcas e conteúdos pertencem aos seus respectivos proprietários."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "Mais baixadores grátis"
+      }
     }
   }
 }

@@ -76,20 +76,31 @@ task clean        # down + suppression des volumes (⚠️ efface MongoDB)
   hachés via bcrypt. Le middleware `requireAdmin` vérifie le token sur les routes protégées.
 - **Anti-SSRF** : seuls les liens `twitter.com` / `x.com` sont acceptés au téléchargement, et le
   proxy média (`/api/media`) n'accepte que les hôtes CDN whitelistés (`video.twimg.com`, …).
-- **Rate limiting** sur `/api/download` et `/api/admin/login`.
-- **Helmet** pour les en-têtes HTTP, **CORS** restreignable via `CORS_ORIGINS`.
+- **Rate limiting** sur `/api/download`, `/api/audio`, `/api/video` et `/api/admin/login`.
+- **Helmet** + **CSP stricte** au niveau de Nginx (front), **CORS** restreignable via `CORS_ORIGINS`.
+- Proxy média durci : **HTTPS only**, taille max (`MAX_MEDIA_BYTES`) et **timeout amont** (`MEDIA_FETCH_TIMEOUT_MS`).
 - File d'attente (`p-queue`) bornant le nombre de process `yt-dlp` concurrents.
 - Secrets dans `server/.env` (git-ignoré), jamais dans `docker-compose.yml`.
+- Politique de sécurité : [`SECURITY.md`](SECURITY.md). Retrait de contenu : page **DMCA** in-app.
+
+## Fiabilité & observabilité
+
+- **Auto-update yt-dlp au démarrage** du conteneur (`YT_DLP_AUTO_UPDATE`, best-effort) : un simple
+  redéploiement répare l'extraction quand X/YouTube cassent le HTML. Mettre à `false` pour figer le binaire.
+- **`/api/health` approfondi** : ping MongoDB + version yt-dlp + taux d'erreur récent (renvoie `503` si dégradé,
+  avec un `serverSelectionTimeoutMS` court pour ne pas pendre 30 s quand Mongo est down).
+- **Alerting** : quand le taux d'échec d'extraction dépasse un seuil (`ALERT_ERROR_RATE`), une alerte
+  Slack (`ALERT_SLACK_WEBHOOK`) est envoyée — tu sais que yt-dlp est cassé avant les utilisateurs.
 
 ## Endpoints
 
-| Méthode | Route              | Auth   | Description                                  |
-| ------- | ------------------ | ------ | -------------------------------------------- |
-| GET     | `/api/health`      | —      | Liveness + ping MongoDB                      |
-| POST    | `/api/download`    | —      | Résout l'URL de la vidéo d'un tweet          |
-| GET     | `/api/media`       | —      | Proxy de streaming d'un média CDN whitelisté |
-| POST    | `/api/admin/login` | —      | Login admin → JWT                            |
-| GET     | `/api/admin/stats` | Bearer | Statistiques (téléchargements, erreurs)      |
+| Méthode | Route              | Auth   | Description                                                    |
+| ------- | ------------------ | ------ | -------------------------------------------------------------- |
+| GET     | `/api/health`      | —      | Ping MongoDB + version yt-dlp + taux d'erreur (503 si dégradé) |
+| POST    | `/api/download`    | —      | Résout l'URL de la vidéo d'un tweet                            |
+| GET     | `/api/media`       | —      | Proxy de streaming d'un média CDN whitelisté                   |
+| POST    | `/api/admin/login` | —      | Login admin → JWT                                              |
+| GET     | `/api/admin/stats` | Bearer | Statistiques (téléchargements, erreurs)                        |
 
 ## Notes
 
@@ -97,8 +108,8 @@ task clean        # down + suppression des volumes (⚠️ efface MongoDB)
   (nom propre, pas de lien CDN expirant ni de blocage CORS).
 - Le format **MP3** nécessite `ffmpeg` (présent dans l'image Docker).
 - `AdBanner` est un placeholder : remplace-le par un vrai code d'annonce (AdSense, etc.).
-- `yt-dlp` casse régulièrement quand X change son HTML : pense à le mettre à jour (`yt-dlp -U`)
-  et à rebuild l'image `api`.
+- `yt-dlp` casse régulièrement quand X change son HTML : le serveur **se met à jour au démarrage**
+  (`YT_DLP_AUTO_UPDATE`), donc un redéploiement suffit le plus souvent — sinon rebuild l'image `api`.
 - **HD / 4K (YouTube, Reddit…)** : ces plateformes servent la HD en flux **séparés (DASH)**. Le serveur
   les **fusionne** (yt-dlp + ffmpeg) via `/api/video` — les qualités concernées portent le badge **HD**.
 

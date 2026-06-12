@@ -23,7 +23,7 @@
     "copySuccess": "Link skopiowany!",
     "paste": "Wklej",
     "clear": "Wyczyść",
-    "enterLink": "Wpisz powyżej link do tweeta, aby zobaczyć dostępne jakości.",
+    "enterLink": "Wklej powyżej link, aby zobaczyć dostępne jakości.",
     "downloadTitle": "Tytuł:",
     "adLabel": "Reklama",
     "formatLabel": "Format",
@@ -46,7 +46,7 @@
     "title": "Jak pobrać wideo w 3 krokach?",
     "subtitle": "W 3 krokach, na komputerze i telefonie.",
     "step1Title": "Skopiuj link do tweeta",
-    "step1Desc": "Na X dotknij ikony udostępniania pod tweetem, a następnie „Kopiuj link”.",
+    "step1Desc": "Na {{platform}} dotknij ikony udostępniania przy poście, a następnie „Kopiuj link”.",
     "step2Title": "Wklej link",
     "step2Desc": "Wklej link w pole powyżej i kliknij „Pokaż jakości”.",
     "step3Title": "Wybierz i pobierz",
@@ -136,6 +136,92 @@
     "gridTitle": "Wybierz platformę",
     "youtube": {
       "name": "YouTube"
+    }
+  },
+  "meta": {
+    "siteTitle": "Twitter Video Downloader — Pobieraj wideo z Twittera / X w MP4",
+    "siteDesc": "Pobieraj za darmo wideo z Twittera / X, TikToka, Instagrama, Reddita i Facebooka w MP4 i wysokiej jakości — wystarczy link. Wybierz rozdzielczość i pobierz plik jednym kliknięciem."
+  },
+  "brands": {
+    "tiktok": {
+      "meta": {
+        "siteTitle": "TokSaver — Pobieranie wideo z TikToka bez znaku wodnego (HD MP4)",
+        "siteDesc": "Pobieraj wideo z TikToka bez znaku wodnego w HD MP4 lub zapisuj dźwięk jako MP3 — wystarczy link. Za darmo, bez limitów, bez aplikacji i bez rejestracji — na iPhonie, Androidzie i PC."
+      },
+      "header": {
+        "title": "TokSaver",
+        "subtitle": "Pobieraj wideo z TikToka bez znaku wodnego."
+      },
+      "home": {
+        "heroTag": "Bez znaku wodnego · Za darmo · Bez aplikacji",
+        "heroTitle": "Pobieraj wideo z TikToka bez znaku wodnego.",
+        "heroDesc": "Wklej link z TikToka i zapisz wideo w HD MP4 — bez znaku wodnego z nazwą użytkownika — albo wyodrębnij dźwięk jako MP3. Za darmo, bez limitów, niczego nie instalujesz.",
+        "inputLabel": "Link z TikToka",
+        "inputPlaceholder": "https://www.tiktok.com/@user/video/1234567890",
+        "enterLink": "Wklej powyżej link z TikToka, aby zobaczyć dostępne jakości.",
+        "supported": "Działa też z Twitter/X, Instagram, Reddit i Facebook",
+        "intro1": "TokSaver zapisuje każde publiczne wideo z TikToka prosto na Twoje urządzenie — w najlepszej dostępnej jakości i bez ruchomego znaku wodnego z nazwą użytkownika na obrazie.",
+        "intro2": "Wszystko dzieje się w przeglądarce: bez instalowania aplikacji, bez zakładania konta, bez limitów pobierania. Skopiuj link w aplikacji TikTok, wklej go powyżej, wybierz MP4 lub MP3 — gotowe w kilka sekund.",
+        "intro3": "Filmy są pobierane na żądanie z serwerów TikToka i przesyłane bezpośrednio do Ciebie. Nigdy nie przechowujemy Twoich plików ani historii."
+      },
+      "steps": {
+        "title": "Jak pobrać wideo z TikToka w 3 krokach?",
+        "step1Title": "Skopiuj link z TikToka",
+        "step1Desc": "W aplikacji TikTok dotknij Udostępnij przy filmie, a następnie „Kopiuj link”."
+      },
+      "faq": {
+        "q7": "Czy znak wodny TikToka naprawdę znika?",
+        "a7": "Tak. Pobieramy oryginalny plik, który TikTok udostępnia bez ruchomego znaku wodnego z nazwą użytkownika, zawsze gdy platforma go oferuje — a tak jest w zdecydowanej większości publicznych filmów.",
+        "q8": "Czy mogę zapisać sam dźwięk z TikToka jako MP3?",
+        "a8": "Tak — wklej link, przełącz format na MP3 i otrzymasz ścieżkę audio z filmu, gotową do Twojej biblioteki lub własnych montaży."
+      },
+      "footer": {
+        "tagline": "Pobieraj wideo z TikToka bez znaku wodnego — za darmo, szybko i w HD.",
+        "disclaimer": "Usługa niepowiązana z TikTok ani ByteDance Ltd. Znaki i treści należą do ich właścicieli."
+      },
+      "platform": {
+        "defaultName": "TikTok",
+        "gridTitle": "Więcej darmowych narzędzi"
+      }
+    },
+    "twitter": {
+      "meta": {
+        "siteTitle": "TweetSaver — Pobieranie wideo z Twittera / X w MP4 (wideo i GIF-y)",
+        "siteDesc": "Pobieraj wideo i GIF-y z Twittera / X w MP4 do 1080p — wystarczy link do tweeta. Za darmo, szybko, bez rejestracji — na iPhonie, Androidzie i PC."
+      },
+      "header": {
+        "title": "TweetSaver",
+        "subtitle": "Pobieraj wideo z Twittera / X w MP4."
+      },
+      "home": {
+        "heroTag": "Za darmo · HD do 1080p · Bez rejestracji",
+        "heroTitle": "Pobieraj wideo z Twittera / X w MP4.",
+        "heroDesc": "Wklej link do tweeta i zapisz wideo lub GIF w MP4, w każdej jakości, jaką oferuje X — do 1080p — albo wyodrębnij dźwięk jako MP3. Za darmo i bez limitów.",
+        "inputLabel": "Link do tweeta",
+        "inputPlaceholder": "https://x.com/username/status/1234567890",
+        "enterLink": "Wklej powyżej link do tweeta, aby zobaczyć dostępne jakości.",
+        "supported": "Działa też z TikTok, Instagram, Reddit i Facebook",
+        "intro1": "TweetSaver zamienia każdy publiczny tweet z wideo lub GIF-em w czysty plik MP4 na Twoim urządzeniu — z dokładną rozdzielczością i rozmiarem pliku widocznymi przed pobraniem.",
+        "intro2": "Wszystko dzieje się w przeglądarce: bez aplikacji, bez konta, bez limitów. Skopiuj link do tweeta w X, wklej go powyżej, wybierz jakość — pobieranie zaczyna się natychmiast.",
+        "intro3": "Filmy są pobierane na żądanie z serwerów X i przesyłane bezpośrednio do Ciebie. Niczego nie przechowujemy, nawet Twojej historii."
+      },
+      "steps": {
+        "title": "Jak pobrać wideo z Twittera / X w 3 krokach?"
+      },
+      "faq": {
+        "q7": "Czy mogę pobierać GIF-y z Twittera / X?",
+        "a7": "Tak. X zamienia GIF-y w krótkie filmy, a my zapisujemy je dla Ciebie jako zwykłe pliki MP4, które odtworzysz wszędzie — z oryginalną jakością pętli.",
+        "q8": "Jakie rozdzielczości są dostępne?",
+        "a8": "Wszystkie wersje, które X oferuje dla tweeta — zwykle 360p, 720p i 1080p — każda z rozmiarem pliku, więc wybierasz przed pobraniem."
+      },
+      "footer": {
+        "tagline": "Pobieraj wideo i GIF-y z Twittera / X w MP4 — za darmo, szybko i w HD.",
+        "disclaimer": "Usługa niepowiązana z X Corp. / Twitter. Znaki i treści należą do ich właścicieli."
+      },
+      "platform": {
+        "defaultName": "Twitter / X",
+        "gridTitle": "Więcej darmowych narzędzi"
+      }
     }
   }
 }

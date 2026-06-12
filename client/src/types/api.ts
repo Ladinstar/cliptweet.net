@@ -6,7 +6,7 @@ export interface DownloadResponse {
 }
 
 export interface DownloadRequest {
-  tweetUrl: string;
+  sourceUrl: string;
   format: 'mp4' | 'mp3';
   quality?: 'best' | 'low';
   formatId?: string | null;
@@ -25,7 +25,7 @@ export interface VideoFormat {
 }
 
 export interface FormatsRequest {
-  tweetUrl: string;
+  sourceUrl: string;
 }
 
 export interface FormatsResponse {
@@ -52,6 +52,7 @@ export interface AdminStats {
   lastLinks: Array<{
     url: string;
     title: string;
+    platform?: string;
     format: string;
     quality: string;
     timestamp: string;
@@ -63,6 +64,7 @@ export interface AdminStats {
   }>;
   formatStats: Record<string, number>;
   qualityStats: Record<string, number>;
+  platformStats: Record<string, number>;
 }
 
 export interface ApiError {

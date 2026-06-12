@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 import { useLocale, localeHref } from '@/hooks/useLocale';
-import { PLATFORMS } from '@/lib/platforms';
+import { NAV_PLATFORMS, platformPath } from '@/lib/platforms';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -18,6 +18,7 @@ export default function Footer() {
     { href: localeHref(locale, '/about'), label: t('pages.about.title') },
     { href: localeHref(locale, '/privacy'), label: t('pages.privacy.title') },
     { href: localeHref(locale, '/terms'), label: t('pages.terms.title') },
+    { href: localeHref(locale, '/dmca'), label: t('pages.dmca.title') },
     { href: localeHref(locale, '/contact'), label: t('pages.contact.title') },
   ];
 
@@ -33,9 +34,9 @@ export default function Footer() {
         <div>
           <p className={heading}>{t('footer.tools')}</p>
           <ul className="mt-4 space-y-2.5">
-            {PLATFORMS.map((p) => (
+            {NAV_PLATFORMS.map((p) => (
               <li key={p.id}>
-                <Link href={localeHref(locale, `/${p.id}`)} className={link}>
+                <Link href={localeHref(locale, platformPath(p.id))} className={link}>
                   {p.name}
                 </Link>
               </li>

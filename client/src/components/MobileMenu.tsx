@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale, localeHref } from '@/hooks/useLocale';
-import { PLATFORMS } from '@/lib/platforms';
+import { NAV_PLATFORMS, platformPath } from '@/lib/platforms';
 
 export default function MobileMenu() {
   const { t } = useTranslation();
@@ -63,14 +63,15 @@ export default function MobileMenu() {
 
           <div className="my-2 border-t border-slate-200 dark:border-slate-700" />
           <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{t('footer.tools')}</p>
-          {PLATFORMS.map((p) => (
-            <Link key={p.id} href={localeHref(locale, `/${p.id}`)} className={linkClass} onClick={close}>
-              <span className="mr-2" aria-hidden="true">
-                {p.icon}
-              </span>
-              {p.name}
-            </Link>
-          ))}
+          {NAV_PLATFORMS.map((p) => {
+            const Icon = p.icon;
+            return (
+              <Link key={p.id} href={localeHref(locale, platformPath(p.id))} className={linkClass} onClick={close}>
+                <Icon className="mr-2 inline h-5 w-5 align-text-bottom" style={{ color: p.color }} aria-hidden="true" />
+                {p.name}
+              </Link>
+            );
+          })}
 
           <div className="my-2 border-t border-slate-200 dark:border-slate-700" />
           <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{t('footer.legal')}</p>

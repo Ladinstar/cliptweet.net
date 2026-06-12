@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "python3 -m http.server 4999 --directory client/out",
+      "startServerReadyPattern": "Serving HTTP",
+      "url": [
+        "http://localhost:4999/",
+        "http://localhost:4999/en/",
+        "http://localhost:4999/en/youtube/",
+        "http://localhost:4999/en/dmca/"
+      ],
+      "numberOfRuns": 1,
+      "settings": { "preset": "desktop" }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.7 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": { "target": "temporary-public-storage" }
+  }
+}
