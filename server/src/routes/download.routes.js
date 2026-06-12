@@ -27,8 +27,9 @@ downloadRouter.post(
   '/formats',
   downloadLimiter,
   asyncHandler(async (req, res) => {
-    const { tweetUrl } = req.body;
-    res.json(await listFormats(tweetUrl));
+    // `sourceUrl` is the platform-neutral name; `tweetUrl` is the legacy alias.
+    const { sourceUrl, tweetUrl } = req.body;
+    res.json(await listFormats(sourceUrl ?? tweetUrl));
   }),
 );
 
@@ -36,8 +37,8 @@ downloadRouter.post(
   '/download',
   downloadLimiter,
   asyncHandler(async (req, res) => {
-    const { tweetUrl, format = 'mp4', quality = 'best', formatId = null } = req.body;
-    const result = await resolveDownload({ tweetUrl, format, quality, formatId });
+    const { sourceUrl, tweetUrl, format = 'mp4', quality = 'best', formatId = null } = req.body;
+    const result = await resolveDownload({ tweetUrl: sourceUrl ?? tweetUrl, format, quality, formatId });
     res.json(result);
   }),
 );
@@ -113,7 +114,16 @@ downloadRouter.get(
     const filename = (String(req.query.filename || 'twitter-video') + '.mp4').replace(/[^\w.-]/g, '_');
     const range = req.headers.range;
 
-    const upstream = await fetch(src, { headers: range ? { Range: range } : {} });
+    let upstream;
+    try {
+      upstream = await fetch(src, {
+        headers: range ? { Range: range } : {},
+        signal: AbortSignal.timeout(config.download.mediaFetchTimeoutMs),
+      });
+    } catch {
+      res.status(504).json({ error: 'Le serveur média a mis trop de temps à répondre.' });
+      return;
+    }
     if (!upstream.ok || !upstream.body) {
       res.status(502).json({ error: 'Média indisponible.' });
       return;

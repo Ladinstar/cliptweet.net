@@ -21,7 +21,10 @@ export default function StatsCounter() {
     };
   }, []);
 
-  if (count === null) return null;
-
-  return <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">⚡ {t('home.socialProof', { count })}</p>;
+  // Always reserve the line height so the count appearing doesn't shift layout (CLS).
+  return (
+    <p className="mt-4 min-h-[1.25rem] text-sm text-slate-500 dark:text-slate-400">
+      {count !== null ? <>⚡ {t('home.socialProof', { count })}</> : null}
+    </p>
+  );
 }

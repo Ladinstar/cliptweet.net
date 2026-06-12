@@ -3,14 +3,27 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
 
-export default function Steps({ platformName }: { platformName?: string }) {
+interface StepsProps {
+  platformName?: string;
+  // Page-scoped brand overrides (focused home page only).
+  title?: string;
+  step1Title?: string;
+  step1Desc?: string;
+}
+
+export default function Steps({ platformName, title, step1Title, step1Desc }: StepsProps) {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const cardClass = theme === 'dark' ? 'border-slate-800/70 bg-slate-950/80' : 'border-slate-200 bg-white/90';
   const platform = platformName || t('platform.defaultName');
 
   const steps = [
-    { n: '1', title: t('steps.step1Title'), desc: t('steps.step1Desc', { platform }), icon: '🔗' },
+    {
+      n: '1',
+      title: step1Title || t('steps.step1Title'),
+      desc: (step1Desc || t('steps.step1Desc', { platform })).replace(/\{\{platform\}\}/g, platform),
+      icon: '🔗',
+    },
     { n: '2', title: t('steps.step2Title'), desc: t('steps.step2Desc'), icon: '📋' },
     { n: '3', title: t('steps.step3Title'), desc: t('steps.step3Desc'), icon: '⬇️' },
   ];
@@ -18,7 +31,7 @@ export default function Steps({ platformName }: { platformName?: string }) {
   return (
     <section>
       <div className="text-center">
-        <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">{t('steps.title')}</h2>
+        <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">{title || t('steps.title')}</h2>
         <p className="mt-3 text-slate-600 dark:text-slate-400">{t('steps.subtitle')}</p>
       </div>
 

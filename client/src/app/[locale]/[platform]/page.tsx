@@ -4,12 +4,15 @@ import PlatformView from '@/views/PlatformView';
 import { getMessages } from '@/lib/messages';
 import { buildPlatformJsonLd } from '@/lib/jsonLd';
 import { altLanguages, isLocale, LOCALES, type Locale } from '@/lib/i18n-config';
-import { PLATFORM_IDS, getPlatform, isPlatform } from '@/lib/platforms';
+import { getPlatform, isPlatform } from '@/lib/platforms';
+import { BRAND } from '@/config/brand';
 
 export const dynamicParams = false;
 
+// Only the brand's subpage platforms are built — on a focused brand the focus
+// platform's downloader IS the home page.
 export function generateStaticParams() {
-  return LOCALES.flatMap((locale) => PLATFORM_IDS.map((platform) => ({ locale, platform })));
+  return LOCALES.flatMap((locale) => BRAND.subpagePlatforms.map((platform) => ({ locale, platform })));
 }
 
 export function generateMetadata({ params }: { params: { locale: string; platform: string } }): Metadata {
@@ -25,7 +28,7 @@ export function generateMetadata({ params }: { params: { locale: string; platfor
 }
 
 export default function PlatformPage({ params }: { params: { locale: string; platform: string } }) {
-  if (!isPlatform(params.platform)) notFound();
+  if (!isPlatform(params.platform) || !BRAND.subpagePlatforms.includes(params.platform)) notFound();
   const locale: Locale = isLocale(params.locale) ? params.locale : 'en';
   const name = getPlatform(params.platform)?.name || params.platform;
 

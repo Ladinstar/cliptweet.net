@@ -3,11 +3,12 @@ import PQueue from 'p-queue';
 import { mkdtemp, rm, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { config } from '../config.js';
+import { config, cookiesStatus } from '../config.js';
 import { getCollections } from '../db.js';
 import { logger } from '../logger.js';
 import { cacheGet, cacheSet } from '../cache.js';
-import { badRequest, serverError } from '../utils/httpError.js';
+import { recordOutcome } from './monitoring.service.js';
+import { badRequest, forbidden, notFound, serverError } from '../utils/httpError.js';
 
 const queue = new PQueue({ concurrency: config.download.concurrency });
 
@@ -20,9 +21,12 @@ export function sanitizeFilename(name, fallback = 'twitter-video') {
   return clean || fallback;
 }
 
-// Inject the cookies file (if configured) to harden extraction against guest-token blocks.
+// Inject the cookies file to authenticate yt-dlp (age-restricted / login-gated
+// videos). Only when the file actually exists — a missing path is silently
+// skipped (guest mode) rather than passed to yt-dlp, which would error out.
 function ytdlpOptions(options) {
-  return config.download.cookiesFile ? { ...options, cookies: config.download.cookiesFile } : options;
+  const { exists, path } = cookiesStatus();
+  return exists ? { ...options, cookies: path } : options;
 }
 
 // Reject (for the user) if yt-dlp hangs longer than `ms`.
@@ -35,7 +39,18 @@ function withTimeout(promise, ms, label) {
 }
 
 function runYtDlp(url, options, ms) {
-  return queue.add(() => withTimeout(ytDlp(url, ytdlpOptions(options)), ms, 'yt-dlp'));
+  return queue.add(() =>
+    withTimeout(ytDlp(url, ytdlpOptions(options)), ms, 'yt-dlp').then(
+      (result) => {
+        void recordOutcome(true);
+        return result;
+      },
+      (error) => {
+        void recordOutcome(false);
+        throw error;
+      },
+    ),
+  );
 }
 
 /**
@@ -73,6 +88,24 @@ export function parseSourceUrl(rawUrl) {
 
 // Backwards-compatible alias.
 export const parseTweetUrl = parseSourceUrl;
+
+/**
+ * True when a media URL lives on a cookie-bound CDN that the /media proxy
+ * cannot fetch (e.g. TikTok signs URLs against a tt_chain_token cookie).
+ * Such formats must go through the server-side yt-dlp download path.
+ */
+export function requiresServerFetch(rawUrl) {
+  if (!rawUrl) return false;
+  let host;
+  try {
+    host = new URL(rawUrl).hostname.toLowerCase();
+  } catch {
+    return true;
+  }
+  return config.download.cookieBoundMediaHostSuffixes.some(
+    (suffix) => host === suffix || host.endsWith(`.${suffix}`),
+  );
+}
 
 const FORMAT_ID_RE = /^[A-Za-z0-9_+.-]+$/;
 
@@ -160,7 +193,10 @@ export async function listFormats(tweetUrl) {
         filesizeBytes: f.filesize || f.filesize_approx || null,
         tbr: f.tbr ? Math.round(f.tbr) : null,
         url: f.url || null,
-        needsMerge: !hasAudio(f),
+        // "needsMerge" really means "must be fetched server-side via yt-dlp":
+        // video-only DASH needs an audio merge, and cookie-bound CDNs can't be
+        // streamed by the /media proxy at all.
+        needsMerge: !hasAudio(f) || requiresServerFetch(f.url),
       }))
       .sort((a, b) => (b.height || 0) - (a.height || 0));
 
@@ -182,8 +218,37 @@ export async function listFormats(tweetUrl) {
       message: String(message).slice(0, 2000),
       timestamp: new Date().toISOString(),
     });
-    throw serverError('Impossible de récupérer les qualités, vérifiez le lien ou réessayez.');
+    throw mapExtractionError(message, 'Impossible de récupérer les qualités, vérifiez le lien ou réessayez.');
   }
+}
+
+/**
+ * Translate well-known yt-dlp failures into actionable user-facing errors
+ * instead of a generic 500 ("it's the video, not the service").
+ */
+export function mapExtractionError(stderr, fallback) {
+  const msg = String(stderr);
+  if (/Sign in to confirm your age|age.restricted|inappropriate for some users/i.test(msg)) {
+    return forbidden("Cette vidéo est soumise à une restriction d'âge : la plateforme exige une connexion pour y accéder, nous ne pouvons pas la récupérer.");
+  }
+  if (/Private video|This post is private|private account/i.test(msg)) {
+    return forbidden('Cette vidéo est privée et ne peut pas être téléchargée.');
+  }
+  if (/Video unavailable|This post is unavailable|has been deleted|no longer available|404/i.test(msg)) {
+    return notFound("Cette vidéo n'existe plus ou n'est pas accessible.");
+  }
+  if (/available in your country|geo.?restricted|blocked it in your country/i.test(msg)) {
+    return forbidden("Cette vidéo est bloquée géographiquement et n'est pas accessible depuis nos serveurs.");
+  }
+  if (/confirm you.?re not a bot|to confirm you are not a robot/i.test(msg)) {
+    return serverError('La plateforme limite temporairement nos requêtes, réessayez dans quelques minutes.');
+  }
+  // Age/login-gated videos make yt-dlp probe many player clients (~2 min)
+  // before failing — our timeout fires first, so surface the likely cause.
+  if (/yt-dlp timeout/i.test(msg)) {
+    return serverError("L'analyse a pris trop de temps : la vidéo est peut-être soumise à une restriction (âge, connexion requise) ou la plateforme répond lentement. Réessayez ou utilisez un autre lien.");
+  }
+  return serverError(fallback);
 }
 
 function pickDownloadUrl(result) {
@@ -227,7 +292,7 @@ export async function resolveDownload({ tweetUrl, format = 'mp4', quality = 'bes
       timestamp: new Date().toISOString(),
     });
 
-    throw serverError('Échec du téléchargement, vérifiez le lien ou réessayez plus tard.');
+    throw mapExtractionError(message, 'Échec du téléchargement, vérifiez le lien ou réessayez plus tard.');
   }
 }
 
@@ -278,6 +343,8 @@ export async function downloadAudioToTemp(tweetUrl, audioFormat = 'mp3') {
         audioFormat: ext,
         ...(ext === 'mp3' ? { audioQuality: 0 } : {}),
         format: 'bestaudio/best',
+        concurrentFragments: config.download.concurrentFragments,
+        ...fastDownloadFlags(),
         output: join(dir, 'audio.%(ext)s'),
         printJson: true,
         socketTimeout: Math.ceil(config.download.timeoutMs / 1000),
@@ -310,8 +377,23 @@ export async function downloadAudioToTemp(tweetUrl, audioFormat = 'mp3') {
       message: String(message).slice(0, 2000),
       timestamp: new Date().toISOString(),
     });
-    throw serverError("Échec de l'extraction audio, vérifiez le lien ou réessayez.");
+    throw mapExtractionError(message, "Échec de l'extraction audio, vérifiez le lien ou réessayez.");
   }
+}
+
+/**
+ * Extra yt-dlp flags for big downloads: aria2c with parallel connections when
+ * available (strongest against YouTube's per-connection throttling), otherwise
+ * chunked native downloads.
+ */
+function fastDownloadFlags() {
+  if (config.download.aria2cPath) {
+    return {
+      downloader: config.download.aria2cPath,
+      downloaderArgs: 'aria2c:-x 16 -s 16 -k 1M --summary-interval=0',
+    };
+  }
+  return { httpChunkSize: config.download.httpChunkSize };
 }
 
 /**
@@ -336,6 +418,8 @@ export async function downloadMergedToTemp(tweetUrl, formatId) {
         noPlaylist: true,
         format: `${formatId}+bestaudio/best`,
         mergeOutputFormat: 'mp4',
+        concurrentFragments: config.download.concurrentFragments,
+        ...fastDownloadFlags(),
         output: join(dir, 'video.%(ext)s'),
         printJson: true,
         socketTimeout: Math.ceil(config.download.timeoutMs / 1000),
@@ -368,6 +452,6 @@ export async function downloadMergedToTemp(tweetUrl, formatId) {
       message: String(message).slice(0, 2000),
       timestamp: new Date().toISOString(),
     });
-    throw serverError('Échec de la fusion vidéo, réessayez ou choisissez une autre qualité.');
+    throw mapExtractionError(message, 'Échec de la fusion vidéo, réessayez ou choisissez une autre qualité.');
   }
 }

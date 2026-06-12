@@ -1,33 +1,40 @@
 import type { Metadata, Viewport } from 'next';
 import Providers from './providers';
+import { BRAND, SITE_URL } from '@/config/brand';
+import { getMessages } from '@/lib/messages';
 import './globals.css';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://twitter-video-downloader.example';
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const en = getMessages('en');
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Twitter Video Downloader — Télécharge des vidéos Twitter / X en MP4',
-    template: '%s · Twitter Video Downloader',
+    default: en.meta.siteTitle,
+    template: `%s · ${BRAND.siteName}`,
   },
-  description:
-    "Télécharge gratuitement des vidéos Twitter / X en MP4, en haute qualité, à partir d'un simple lien. Choisis la résolution et récupère le fichier en un clic.",
+  description: en.meta.siteDesc,
   icons: { icon: '/favicon.svg' },
   manifest: '/manifest.webmanifest',
-  appleWebApp: { capable: true, title: 'TVD', statusBarStyle: 'black-translucent' },
-  // Static AdSense verification (works even without JS execution).
-  ...(ADSENSE_CLIENT ? { other: { 'google-adsense-account': ADSENSE_CLIENT } } : {}),
+  appleWebApp: { capable: true, title: BRAND.shortName, statusBarStyle: 'black-translucent' },
+  other: {
+    // Modern, non-deprecated counterpart of apple-mobile-web-app-capable.
+    'mobile-web-app-capable': 'yes',
+    // Static AdSense verification (works even without JS execution).
+    ...(ADSENSE_CLIENT ? { 'google-adsense-account': ADSENSE_CLIENT } : {}),
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0ea5e9',
+  themeColor: BRAND.themeColor,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) inject
+          attributes like `cz-shortcut-listen` on <body> before hydration. */}
+      <body suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>

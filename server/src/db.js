@@ -3,7 +3,11 @@ import bcrypt from 'bcryptjs';
 import { config } from './config.js';
 import { logger } from './logger.js';
 
-const client = new MongoClient(config.mongo.uri);
+// Short server-selection timeout so /health degrades fast (instead of hanging
+// ~30s) when MongoDB is unreachable — orchestrators rely on a snappy probe.
+const client = new MongoClient(config.mongo.uri, {
+  serverSelectionTimeoutMS: config.mongo.serverSelectionTimeoutMs,
+});
 
 const collections = {
   downloads: null,

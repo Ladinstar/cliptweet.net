@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/config/queryClient';
@@ -32,17 +32,30 @@ export default function Providers({ children }: { children: ReactNode }) {
   const first = pathname.split('/')[1];
   const urlLocale = isLocale(first) ? first : null;
 
-  // A locale in the URL (explicit choice) overrides the auto-detected one.
-  // On "/" there's no prefix, so i18n keeps the browser-detected language.
-  if (urlLocale && i18n.language !== urlLocale) {
-    i18n.changeLanguage(urlLocale);
+  // The browser-detected language (e.g. "fr"), captured before we override it.
+  // On the server it resolves to the fallback ("en") since there's no navigator.
+  const detected = useRef(i18n.language).current;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // Language for SSR + the first client paint: the URL locale, or "en" on the
+  // locale-less "/". It MUST match the server-rendered HTML to avoid a hydration
+  // mismatch. We align i18n during render only before mount — at that point no
+  // child is mounted yet, so this can't trigger a setState-in-render warning.
+  const initialLang = urlLocale ?? 'en';
+  if (!mounted && i18n.language !== initialLang) {
+    i18n.changeLanguage(initialLang);
   }
 
+  // After mount, switch to the user's language (URL locale, or the detected one
+  // on "/"). Done in an effect — never during render — so updating subscribed
+  // components (Shell, menus…) is safe.
+  const active = urlLocale ?? detected;
   useEffect(() => {
-    const active = urlLocale || i18n.resolvedLanguage || 'en';
+    if (i18n.language !== active) i18n.changeLanguage(active);
     document.documentElement.lang = active;
     document.documentElement.dir = isRtl(active) ? 'rtl' : 'ltr';
-  }, [urlLocale]);
+  }, [active]);
 
   return (
     <QueryClientProvider client={queryClient}>

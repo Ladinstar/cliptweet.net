@@ -6,7 +6,7 @@ export interface DownloadResponse {
 }
 
 export interface DownloadRequest {
-  tweetUrl: string;
+  sourceUrl: string;
   format: 'mp4' | 'mp3';
   quality?: 'best' | 'low';
   formatId?: string | null;
@@ -25,7 +25,7 @@ export interface VideoFormat {
 }
 
 export interface FormatsRequest {
-  tweetUrl: string;
+  sourceUrl: string;
 }
 
 export interface FormatsResponse {

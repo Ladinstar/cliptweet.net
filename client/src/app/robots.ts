@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://twitter-video-downloader.example';
+import { SITE_URL } from '@/config/brand';
 
 export const dynamic = 'force-static';
 

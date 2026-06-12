@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useAdminStats } from '@/hooks/useApi';
@@ -16,10 +16,6 @@ export default function AdminView() {
   const { token, username, isAuthenticated, ready, logout } = useAuth();
   const { data: stats, isLoading, error } = useAdminStats(token);
 
-  useEffect(() => {
-    if (ready && !isAuthenticated) router.replace(localeHref(locale, '/admin-login'));
-  }, [ready, isAuthenticated, router, locale]);
-
   const handleLogout = () => {
     logout();
     router.push(localeHref(locale, '/'));
@@ -28,10 +24,31 @@ export default function AdminView() {
   const sectionClass = theme === 'dark' ? 'bg-slate-950/80' : 'bg-white/90';
   const textClass = theme === 'dark' ? 'text-slate-400' : 'text-slate-600';
 
-  if (!ready || !isAuthenticated) {
+  // Auth still resolving (localStorage read happens after mount).
+  if (!ready) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-500" />
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-sky-500" />
+      </div>
+    );
+  }
+
+  // Not signed in → explicit 403 (the protected stats API also returns 401).
+  if (!isAuthenticated) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center py-12 text-center">
+        <p className="text-6xl font-black text-rose-500/80">403</p>
+        <h1 className="mt-4 text-2xl font-semibold text-slate-900 dark:text-white">{t('admin.forbiddenTitle')}</h1>
+        <p className={`mt-2 max-w-md ${textClass}`}>{t('admin.forbiddenDesc')}</p>
+        <Link
+          href={localeHref(locale, '/admin-login')}
+          className="mt-6 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+        >
+          {t('admin.goToLogin')}
+        </Link>
+        <Link href={localeHref(locale, '/')} className="mt-4 text-sm text-slate-500 hover:text-sky-500">
+          {t('admin.backHome')}
+        </Link>
       </div>
     );
   }

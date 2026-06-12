@@ -12,6 +12,7 @@ build
 # Next.js
 .next
 out
+out-*/
 next-env.d.ts
 
 # Tests / tooling
@@ -25,3 +26,6 @@ cookies.txt
 
 # Misc
 server/database.sqlite
+
+# Local-only static binaries (prod gets aria2 from the Docker image)
+server/bin/
